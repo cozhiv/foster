@@ -2,6 +2,8 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../auth/[...nextauth]";
 import { prisma } from "@/lib/prisma";
 import { isUserAuthorizedForList } from "@/lib/authorize";
+// import { io } from "socket.io-client";
+// import { broadcast } from '@/server';
 
 export default async function handler(req, res) {
   const session = await getServerSession(req, res, authOptions);
@@ -14,6 +16,14 @@ export default async function handler(req, res) {
     if (!authorized) return res.status(403).json({ error: "Forbidden" });
 
     await prisma.item.delete({ where: { id: itemId } });
+
+    // const socket = io()
+
+    // socket.on('connect', () => {
+      // console.log('socket connected!')
+      // socket.emit('remove', JSON.stringify(listId))
+    // })
+
     return res.status(204).end();
   }
 

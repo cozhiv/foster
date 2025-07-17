@@ -17,6 +17,9 @@ export default async function handler(req, res) {
     await prisma.item.deleteMany({
       where: { listId }
     });
+    await prisma.sale.deleteMany({
+      where: { listId }
+    });
     await prisma.userList.deleteMany({
       where: { listId },
     });

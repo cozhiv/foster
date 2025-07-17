@@ -16,7 +16,18 @@ model User {
   sessions      Session[]
   accounts      Account[]
   lists         UserList[]
+  sales         Sale[]
+  verified      Boolean?
+  resetPassTokens ResetPassToken[]
 }
+
+model ResetPassToken {
+  token     String   @id
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  expires   DateTime
+}
+
 
 model Account {
   id                String   @id @default(cuid())
@@ -42,7 +53,20 @@ model Item {
   price  Float
   status String
   listId String
-  list   List   @relation(fields: [listId], references: [id])
+  list   List     @relation(fields: [listId], references: [id])
+  count  Int
+}
+
+model Sale {
+  id         String   @id @default(cuid())
+  userEmail  String
+  user       User     @relation(fields: [userEmail], references: [email])
+  name       String
+  price      Float
+  listId     String
+  list       List     @relation(fields: [listId], references: [id])
+  status     String
+  count      Int
 }
 
 model List {
@@ -51,6 +75,7 @@ model List {
   status   String
   users    UserList[]
   items    Item[]
+  sales    Sale[]
   
 }
 

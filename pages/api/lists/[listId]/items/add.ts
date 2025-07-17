@@ -15,8 +15,10 @@ export default async function handler(req, res) {
     if (!authorized) return res.status(403).json({ error: "Forbidden" });
 
     const item = await prisma.item.create({
-      data: { name, listId, price: 0.6, status: "new" },
+      data: { name, listId, price: 0.6, status: "new", count: 1 },
     });
+
+
     return res.status(201).json(item);
   }
 
