@@ -1,10 +1,10 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]";
 import { prisma } from "@/lib/prisma";
-import { RequestData } from "next/dist/server/web/types";
+//import { RequestData } from "next/dist/server/web/types";
 
-export default async function handler(req: RequestData, res) {
-  const session = await getServerSession(req, res, authOptions);
+export default async function handler(req: any, res) {
+  const session: any = await getServerSession(req, res, authOptions);
   if (!session) return res.status(401).json({ error: "Unauthorized" });
 
   if (req.method === "POST") {
@@ -12,6 +12,7 @@ export default async function handler(req: RequestData, res) {
     const user = await prisma.user.findUnique({ where: { email: session.user.email } });
     const list = await prisma.list.create({
       data: {
+        status:"why",
         name,
         users: {
           create: [{ userId: user.id }],

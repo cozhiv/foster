@@ -2,14 +2,14 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../auth/[...nextauth]";
 import { prisma } from "@/lib/prisma";
 import { isUserAuthorizedForList } from "@/lib/authorize";
-import type { NextRequest } from "next/server";
-import { IncomingMessage } from "http";
-interface Request extends IncomingMessage {
-  query: {listId: string, itemId: string}
-}
+// import type { NextRequest } from "next/server";
+//import { IncomingMessage } from "http";
+// interface Request extends IncomingMessage {
+//   query: {listId: string, itemId: string}
+// }
 
-export default async function handler(req: Request, res) {
-  const session = await getServerSession(req, res, authOptions);
+export default async function handler(req: any, res) {
+  const session: any = await getServerSession(req, res, authOptions);
   if (!session) return res.status(401).json({ error: "Unauthorized" });
 
   if (req.method === "DELETE") {

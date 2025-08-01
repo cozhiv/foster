@@ -5,9 +5,10 @@ interface Buttony {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   onMouseUp?: MouseEventHandler<HTMLButtonElement>;
   onMouseDown?: MouseEventHandler<HTMLButtonElement>;
+  className: string
 }
 
-function BigButton({ name, onClick, onMouseUp, onMouseDown, className }:Buttony) {
+function BigButton({ name, onClick, onMouseUp, onMouseDown, className }: Buttony) {
   return (
     <div className="btn btn-primary">
       <label>

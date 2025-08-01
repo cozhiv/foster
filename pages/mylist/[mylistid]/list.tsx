@@ -2,8 +2,8 @@ import { useSession, signOut } from "next-auth/react";
 import { useEffect, useState , useRef, useMemo, useCallback} from "react";
 import { useRouter } from 'next/router';
 import io from 'socket.io-client';
-import StoreProvider from "@/app/StoreProvider";
-import { useSelector, useDispatch } from "react-redux";
+//import StoreProvider from "@/app/StoreProvider";
+//import { useSelector, useDispatch } from "react-redux";
 import { decrement, increment } from "@/lib/slices/syncListSlice";
 import { useAppSelector, useAppDispatch, useAppStore } from '../../../lib/hooks'
 import type { JSX, ReactNode } from "react";
@@ -55,7 +55,7 @@ export function MyList() {
   const router = useRouter();
   const { mylistid } = router.query;
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([])
   const [sales, setSales] = useState([])
   const [name, setName] = useState('');

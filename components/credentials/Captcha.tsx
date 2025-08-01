@@ -13,9 +13,9 @@ const Captcha = function({ children }) {
         appendTo: 'head',
         nonce: undefined 
       }}
-      container={{
-        element: "recaptcha-container",
-      }}
+      // container={{
+      //   element: "recaptcha-container",
+      // }}
     >
       {children}
     </GoogleReCaptchaProvider>

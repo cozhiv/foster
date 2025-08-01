@@ -4,7 +4,6 @@ import { setToListInput } from '@/lib/slices/dashboardSlice'
 import { setInvisibleUA, setVisibleUA } from '@/lib/slices/dashboardSlice'
 import InputField from './Input'
 import BiButton from './Button'
-import DashboardProvider from '@/app/DashboardProvider'
 
 const AddUser = React.memo(AddUserRaw)
 function AddUserRaw() {
@@ -72,14 +71,12 @@ function AddUserRaw() {
                 onClick={() => addUserToList()}
                 className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 sm:ml-3 sm:w-auto"
               >
-                Add User
               </BiButton>
               <BiButton
                 name = "Cancel"
                 onClick={() => dispatch(setInvisibleUA())}
                 className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto"
               >
-                Cancel
               </BiButton>
             </div>
           </div>

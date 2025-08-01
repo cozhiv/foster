@@ -42,9 +42,13 @@ export default async function handler(req, res) {
       where: {id}, //change email to id
       include: {
         lists: {
-          include: {
-            items: true
-          }
+         include: {
+            list: {
+              include: {
+                sales: true
+              }
+            }
+         }
         }
       }
     })

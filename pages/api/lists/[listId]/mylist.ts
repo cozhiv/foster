@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { isUserAuthorizedForList } from "@/lib/authorize";
 
 export default async function handler(req, res) {
-  const session = await getServerSession(req, res, authOptions);
+  const session: any = await getServerSession(req, res, authOptions);
   if (!session) return res.status(401).json({ error: "Unauthorized" });
   const { listId } = req.query;
   
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
   if (!authorized) return res.status(403).json({ error: "Forbidden" });
   // console.log("session email: ", session.user.email)
-  const list = await prisma.list.findUnique({
+  const list: any = await prisma.list.findUnique({
     where: { id: listId },
     include: {
       items: true,
