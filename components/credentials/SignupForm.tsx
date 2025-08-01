@@ -85,9 +85,7 @@ export default function SignupForm() {
 
   const handleFormSubmition = async (e) => {
     e.preventDefault()
-    // const {password, email, repassword} = form;
-    console.log(email)
-    //(password);
+    
     if (!executeRecaptcha) {
       setCommonErr('Execute recaptcha not yet available');
       return;
