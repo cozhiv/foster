@@ -78,6 +78,7 @@ export default function SignupForm() {
 
   const handleInput = (setInput) => {
     return function (e) {
+      console.log(e.target.value)
       setInput(e.target.value);
       setNoErr();
     }

@@ -32,7 +32,7 @@ export default async function handler(req, res) {
         }
       }
     });
-    console.log(JSON.stringify(list))
+    // console.log(JSON.stringify(list))
 
     if (list.sales[0].count > 1) {
       await prisma.sale.update({

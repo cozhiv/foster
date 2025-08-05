@@ -16,7 +16,7 @@ export default function LoginForm() {
   const handleInput = (setter) => {
     return function(e) {
       setter(e.target.value);
-      console.log(e.key)
+      console.log(e.target.value)
       if (errMsg && e.key !==" enter") {
         setErrMsg("")
       }
@@ -101,7 +101,9 @@ export default function LoginForm() {
                         /> Sign in with Facebook</button>
         </div>
         <div className="signup-inputs">
-          <Link key={'LinkToForgotEmail'} href={'forgotpass'}>Forgot Password?</Link>
+          <div id="forgot-password">
+            <Link  key={'LinkToForgotEmail'} href={'forgotpass'}>Forgot Password?</Link>
+          </div>
           {/* <button className="forgot-password">forgot password?</button> */}
         </div>
       </form>

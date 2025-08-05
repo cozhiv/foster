@@ -223,6 +223,10 @@ input.signup-line:focus {
   color: #123344;
 }
 
+#forgot-password {
+  margin: 20px auto auto 0;
+}
+
 .sign-up-err {
   color:#530394;
   margin: 0 0 5px;

@@ -33,7 +33,7 @@ export default async function handler(req: any, res) {
         }
       }
     });
-    console.log(JSON.stringify(list))
+    // console.log(JSON.stringify(list))
 
     if (list.sales.length > 0) {
       await prisma.sale.update({

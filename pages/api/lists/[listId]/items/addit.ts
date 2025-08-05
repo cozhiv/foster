@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       }
     });
 
-    console.log(JSON.stringify(list))
+    // console.log(JSON.stringify(list))
     
 
 

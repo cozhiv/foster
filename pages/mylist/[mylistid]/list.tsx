@@ -87,7 +87,7 @@ export function MyList() {
     setName('');
     // setRend((prev) => prev + 1);
     dispatch(increment())
-    console.log(added)
+    // console.log(added)
     if (added) {
       socket.emit('add', JSON.stringify({ name, listId: mylistid }))
       // fetcher()
@@ -99,7 +99,7 @@ export function MyList() {
     const deleted = await fetch(`/api/lists/${mylistid}/items/${itemId}/take`, {
       method: "DELETE",
     });
-    console.log(deleted)
+    // console.log(deleted)
     if (deleted.ok) {
       socket.emit('remove', itemId)
       // fetcher()
@@ -114,7 +114,7 @@ export function MyList() {
     const deleted = await fetch(`/api/lists/${mylistid}/sales/${itemId}/giveback`, {
       method: "DELETE",
     });
-    console.log(deleted)
+    // console.log(deleted)
     if (deleted.ok) {
       socket.emit('remove', itemId)
     }
