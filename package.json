@@ -5,7 +5,7 @@
   "browser.fs": false,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build; npx auth secret;",
+    "build": "next build; npx prisma migrate reset --force; npx prisma db push --force-reset;",
     "start": "next start",
     "lint": "next lint"
   },
