@@ -11,11 +11,12 @@ const Captcha = function({ children }) {
         async: true,
         defer: false,
         appendTo: 'head',
-        nonce: undefined 
+        nonce: undefined,
       }}
-      container={{
-        element: "recaptcha-container",
-      }}
+      
+      // container={{
+      //   element: "recaptcha-container",
+      // }}
     >
       {children}
     </GoogleReCaptchaProvider>
