@@ -10,11 +10,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     include: { user: true },
   });
 
+  console.log(`{the tok} ${token}`)
   if (!record || record.expires < new Date()) {
     return res.status(400).json({ error: "Token invalid or expired" });
   }
 
   const hashed = await bcrypt.hash(password, 12);
+  console.log(`userId ${record.userId}`)
 
   await prisma.user.update({
     where: { id: record.userId },

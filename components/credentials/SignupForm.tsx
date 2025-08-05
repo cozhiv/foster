@@ -189,6 +189,10 @@ export default function SignupForm() {
           <div className="signup-inputs">
             <input  id = "submit-signup" type="submit" value="Submit" className="signup-line" />
           </div>
+
+          <div className="signup-inputs">
+              By signing up you agree to the Terms of Service and Privacy Policy
+          </div>
         </div>
         </form>
       <div className="recaptcha">

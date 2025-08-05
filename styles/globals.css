@@ -199,15 +199,16 @@ a1 {
 input.signup-line {
   height: 8vh;
   border-radius: 3px;
-  opacity: 6;
-  box-shadow:  1 1 1 1  rgb(60, 60, 44);
+  /* opacity: 6; */
+  /* box-shadow:  1 1 1 1  rgb(60, 60, 44); */
   
 }
 input.signup-line:focus {
-  opacity: 1;
-  box-shadow: 2 2 1 1  rgb(60, 60, 44);
-  background-color: #f4f6f6;
+  opacity: 6;
+  /* box-shadow: 2 2 1 1  rgb(60, 60, 44); */
+  background-color: #e5ffed;
   color: #530394;
+  outline: 0;
 }
 
 #submit-signup {

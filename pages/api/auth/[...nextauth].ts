@@ -48,16 +48,18 @@ const authOptions: any = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
     EmailProvider({
-          server: "",
-          from: "no-reply@mutlist.com",
-          sendVerificationRequest: async ({ identifier: email, url, provider }) => {
-            await resend.emails.send({
-              from: provider.from,
-              to: email,
-              subject: "Verify your email",
-              html: `<p>Click <a href="${url}">here</a> to verify your email address.</p>`,
-            });
-          },
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+      sendVerificationRequest: async ({ identifier: email, url, provider }) => {
+        console.log("[email]  when is this executed?")
+        await resend.emails.send({
+          from: provider.from,
+          to: email,
+          subject: "Verify your email",
+          html: `<p>Click <a href="${url}">here</a> to verify your email address.</p>`,
+        });
+        console.log("[email] async?")
+      },
      }),
   ],
   session: {

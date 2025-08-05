@@ -17,6 +17,8 @@ model User {
   accounts      Account[]
   lists         UserList[]
   sales         Sale[]
+  sums          UserSum[]
+  pictures      UserPic[]
   verified      Boolean?
   resetPassTokens ResetPassToken[]
 }
@@ -87,9 +89,52 @@ model UserList {
   list   List @relation(fields: [listId], references: [id])
   
 
-  role String @default("member") // e.g., "owner" or "member"
+  role String @default("member")
 
-  @@id([userId, listId]) // composite primary key
+  @@id([userId, listId])
 }
 
 
+model UserSum {
+  userId String
+  user   User @relation(fields: [userId], references: [id])
+  
+  sumId String
+  sum   Sum @relation(fields: [sumId], references: [id])
+  
+
+  role String @default("member")
+
+  @@id([userId, sumId])
+}
+
+model Sum {
+  id       String   @id @default(cuid())
+  name     String?
+  value    Float
+  default  Float?
+  status   String?
+  users    UserSum[]
+}
+
+
+model Picture {
+  id       String   @id @default(cuid())
+  title    String?
+  label    String?
+  link     String?
+  path     String?
+  status   String?
+  type     String?
+  users    UserPic[]
+}
+
+model UserPic {
+  userId      String
+  user        User @relation(fields: [userId], references: [id])
+  
+  pictureId   String
+  picture     Picture @relation(fields: [pictureId], references: [id])
+
+  @@id([userId, pictureId])
+}

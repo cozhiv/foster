@@ -48,14 +48,14 @@ const ConfirmationButtons = function ({ children, callback }: ConfirmationButton
     // const bodyStyle = document.body.style;
     // bodyStyle.backgroundColor = "grey";
     // document.body.className = ""
-
+    console.log(subject)
     switch (subject) {
       case "list":
         return (
           <div>
             <div className="confirmation-buttons">
-              <button className="" onClick={handleCancel}>Cancel</button>
-              <button className="" onClick={deleteList}> OK </button>
+              <button className="confirmation-button" onClick={handleCancel}> No </button>
+              <button className="confirmation-button" onClick={deleteList}> Yes </button>
               <div className="additional-children" >{children}</div>
             </div>
           </div>
@@ -64,8 +64,8 @@ const ConfirmationButtons = function ({ children, callback }: ConfirmationButton
         return (
           <div>
             <div className="confirmation-buttons">
-              <button className="confirmation-button" onClick={handleCancel}>Cancel</button>
-              <button className="confirmation-button" onClick={deleteItem}> OK </button>
+              <button className="confirmation-button" onClick={handleCancel}>No</button>
+              <button className="confirmation-button" onClick={deleteItem}> Yes </button>
               <div className="confirmation-children" >{children}</div>
             </div>
           </div>

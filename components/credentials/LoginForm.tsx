@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import Image from "next/image";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
@@ -81,9 +82,27 @@ export default function LoginForm() {
             <input id="submit-signup" className="signup-line" type="submit" value="Sign In" />
           </div>
         </div>
-        <div className="linkbar">
-          <button onClick={() => signIn("google")}>Sign in with Google</button>
-          <button onClick={() => signIn("facebook")}>Sign in with Facebook</button>
+        <div className="signup-inputs">
+          <button onClick={() => signIn("google")}>
+            <Image
+                        className="dark:invert"
+                        src="/googlesign.svg"
+                        alt="Vercel logomark"
+                        width={20}
+                        height={20}
+                      /> Sign in with Google</button>
+          <button onClick={() => signIn("facebook")}>
+            <Image
+                          className="dark:invert"
+                          src="/facebooksign.svg"
+                          alt="Vercel logomark"
+                          width={20}
+                          height={20}
+                        /> Sign in with Facebook</button>
+        </div>
+        <div className="signup-inputs">
+          <Link key={'LinkToForgotEmail'} href={'forgotpass'}>Forgot Password?</Link>
+          {/* <button className="forgot-password">forgot password?</button> */}
         </div>
       </form>
  
@@ -94,3 +113,24 @@ export default function LoginForm() {
   );
 }
 
+
+// import { getCsrfToken } from "next-auth/react";
+
+// export default function SignIn({ csrfToken }: any) {
+//   return (
+//     <form method="post" action="/api/auth/signin/email">
+//       <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+//       <label>Email:</label>
+//       <input type="email" name="email" />
+//       <button type="submit">Sign in with Email</button>
+//     </form>
+//   );
+// }
+
+// export async function getServerSideProps(context: any) {
+//   return {
+//     props: {
+//       csrfToken: await getCsrfToken(context),
+//     },
+//   };
+// }

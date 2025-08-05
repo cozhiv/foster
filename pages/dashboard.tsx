@@ -76,7 +76,7 @@ export default function Dashboard() {
     dispatch(setItemId(itemId))
     dispatch(setAct("delete"))
     dispatch(setSubject("item"))
-    dispatch(setConfirmation("Do you really want to delete this list?"))
+    dispatch(setConfirmation("Do you really want to remove the item?"))
 
     // await fetch(`/api/lists/${listId}/items/${itemId}/delete`, {
     //   method: "DELETE",
@@ -89,7 +89,7 @@ export default function Dashboard() {
     dispatch(setListId(listId))
     dispatch(setAct("delete"))
     dispatch(setSubject("list"))
-    dispatch(setConfirmation("Do you really want to delete this item?"))
+    dispatch(setConfirmation("Do you really want to delete the list?"))
     // await fetch(`/api/lists/${listId}/delete`, {
     //   method: "DELETE",
     // });
@@ -177,7 +177,7 @@ export default function Dashboard() {
           </div>
        <ConfirmationPanel>
           <div className="question-card">
-            Choose how to continue!
+            Delete
           </div>
         <div className="question-card">
          <ConfirmationButtons callback={fetchLists}/>
