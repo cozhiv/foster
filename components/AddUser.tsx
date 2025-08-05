@@ -21,7 +21,7 @@ function AddUserRaw() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userEmail: newUserInput }),
     })
-    console.log(JSON.stringify(userAddition))
+    // console.log(JSON.stringify(userAddition))
     dispatch(setInvisibleUA())
     return userAddition
   }

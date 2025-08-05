@@ -48,7 +48,7 @@ const ConfirmationButtons = function ({ children, callback }: ConfirmationButton
     // const bodyStyle = document.body.style;
     // bodyStyle.backgroundColor = "grey";
     // document.body.className = ""
-    console.log(subject)
+    // console.log(subject)
     switch (subject) {
       case "list":
         return (

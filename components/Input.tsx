@@ -9,7 +9,7 @@ const InputField = memo(function InputField({
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
 }) {
-  console.log(`${placeholder} re-rendered`);
+  // console.log(`${placeholder} re-rendered`);
   return (
     <input
       value={value}
