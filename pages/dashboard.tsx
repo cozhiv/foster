@@ -110,7 +110,7 @@ export default function Dashboard() {
         <div className="dashboard-container">
       <Link key="signoutlink" href = "login" onClick={() => signOut()}>Sign out</Link>
           <div className="dashboard-head">
-            <h2> [] {session.user.email}</h2>
+            <h2>{session.user.email}</h2>
             <h3>Create New List</h3>
             <div className="create-list">
               <input
@@ -149,7 +149,7 @@ export default function Dashboard() {
             <div className="items-container">
               {list.items.map((item) => (
                 <div key={item.id} className="lists-item">
-                  <span className="item-text">- {item.name}</span>
+                  <span className="item-text">ⱝ {item.name}</span>
                   <button className="remove-item" onClick={() => deleteItem(list.id, item.id)} >×</button>
                   <span className="item-count"> × {item.count}</span>
                 </div>
@@ -169,7 +169,7 @@ export default function Dashboard() {
               <button
                 onClick={() => addItem(list.id)}
                 className="add-item-content rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10"
-              >Add Item</button>
+              > Add </button>
             </div>
 
           </div>

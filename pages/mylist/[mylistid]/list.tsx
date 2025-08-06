@@ -165,7 +165,7 @@ export function MyList() {
               onClick={() => takeItem(item.id)}
               > <span 
               className="item-name-ctrl"
-              >{item.name}</span><button
+                >Ⰰ {item.name}</span><button
               className="item-count-ctrl"
               >{item.count}</button><span 
               className="inputty">➾</span></button>
