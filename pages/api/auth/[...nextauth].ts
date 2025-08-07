@@ -7,11 +7,12 @@ import GoogleProvider from 'next-auth/providers/google';
 import FacebookProvider from "next-auth/providers/facebook";
 import GithubProvider from "next-auth/providers/github";
 import EmailProvider from "next-auth/providers/email";
-import { Resend } from "resend";
+// import { Resend } from "resend";
+import { resend } from "../../../utils"
 
 const prisma = new PrismaClient();
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// const resend = new Resend(process.env.RESEND_API_KEY);
 
 const authOptions: any = {
   adapter: PrismaAdapter(prisma),
@@ -48,17 +49,18 @@ const authOptions: any = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
     EmailProvider({
+      // name: "email",
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM,
       sendVerificationRequest: async ({ identifier: email, url, provider }) => {
-        // console.log("[email]  when is this executed?")
+        console.log("[email]  when is this executed?")
         await resend.emails.send({
           from: provider.from,
           to: email,
           subject: "Verify your email",
           html: `<p>Click <a href="${url}">here</a> to verify your email address.</p>`,
         });
-        // console.log("[email] async?")
+        //console.log("[email] async?")
       },
      }),
   ],
@@ -72,7 +74,9 @@ const authOptions: any = {
   callbacks: {
     async redirect({ baseUrl }: {baseUrl: string}) {
       return baseUrl + "/dashboard"; // redirect to dashboard after login
-    }
+    },
+
+
   }
 }
 

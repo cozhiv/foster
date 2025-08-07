@@ -2,8 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Resend } from "resend";
 import { prisma } from "@/lib/prisma";
 import crypto from "crypto";
+import { resend } from "../../../utils"
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { email } = req.body;

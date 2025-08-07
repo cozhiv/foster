@@ -1,0 +1,26 @@
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]";
+import { prisma } from "@/lib/prisma";
+
+export default async function handler(req, res) {
+  const session: any = await getServerSession(req, res, authOptions);
+  if (!session) return res.status(401).json({ error: "Unauthorized" });
+
+  if (req.method === "POST") {
+    const { name, sum } = req.body;
+    const user = await prisma.user.findUnique({ where: { email: session.user.email } });
+    const list = await prisma.sum.create({
+      data: {
+        name,
+        sum,
+        users: {
+          create: [{ userId: user.id }],
+        },
+        status: "new"
+      },
+    });
+    return res.status(201).json(list);
+  }
+
+  res.status(405).end();
+}

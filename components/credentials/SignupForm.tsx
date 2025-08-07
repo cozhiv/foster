@@ -192,7 +192,9 @@ export default function SignupForm() {
           </div>
 
           <div className="signup-inputs">
+            <div className="privacy-documents">
               By signing up you agree to the Terms of Service and Privacy Policy
+            </div>
           </div>
         </div>
         </form>

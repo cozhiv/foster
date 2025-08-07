@@ -162,19 +162,25 @@ a1 {
 
 .strength1{
   color: brown;
+  opacity: 0.8;
 }
 .strength2{
   color: red;
+  opacity: 0.8;
 }
 .strength3{
-  color: yellowgreen;
-  text-shadow: yellow 1px 2px;
+  color: rgb(205, 202, 50);
+  text-shadow:1px 1px 2px #0a0c08, -1px -1px 2px #263616;
+  opacity: 0.8;
+  
 }
 .strength4{
   color: green;
+  opacity: 0.8;
 }
 .input-error{
   border: solid #530394;
+  opacity:0.6;
 }
 /* #sign-up-form{
   display: flex;
@@ -197,6 +203,7 @@ a1 {
 }
 
 input.signup-line {
+  color: #796f80;
   height: 8vh;
   border-radius: 3px;
   /* opacity: 6; */
@@ -204,11 +211,12 @@ input.signup-line {
   
 }
 input.signup-line:focus {
-  opacity: 6;
+  /* opacity: 6; */
   /* box-shadow: 2 2 1 1  rgb(60, 60, 44); */
   background-color: #e5ffed;
-  color: #530394;
+  color: #74588a;
   outline: 0;
+  opacity: 0.8;
 }
 
 #submit-signup {
@@ -230,8 +238,15 @@ input.signup-line:focus {
 .sign-up-err {
   color:#530394;
   margin: 0 0 5px;
+  opacity: 0.8;
+  font-size: 2vh;
 
 }
+.privacy-documents {
+  margin: 18px auto 0 0;
+  font-size: 10pt;
+}
+
 a {
   color: #123344;
 }
@@ -510,6 +525,8 @@ a {
 
 body {
   background-color: #e1e9ed;
+  /* text-shadow: #123344 1px 1px 2px; */
+  opacity: 0.9;
 }
 input[type="text"] {
   background-color: #eff3f6;
@@ -528,4 +545,15 @@ textarea {
 
 .list-users {
   margin: 0 0 16px;
+}
+
+input {
+  opacity:0.8;
+  border: none;
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+}
+
+button {
+  border: none;
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
 }
