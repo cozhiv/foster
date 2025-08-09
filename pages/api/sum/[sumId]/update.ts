@@ -8,9 +8,8 @@ export default async function handler(req, res) {
   if (!session) return res.status(401).json({ error: "Unauthorized" });
 
   if (req.method === "POST") {
-    const { name } = req.body;
+    const { name, value } = req.body;
     const { sumId } = req.query;
-    const { value } = req.query;
 
     const authorized = await isUserAuthorizedForSum(session.user.email, sumId);
     if (!authorized) return res.status(403).json({ error: "Forbidden" });
