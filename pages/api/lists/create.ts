@@ -12,11 +12,12 @@ export default async function handler(req, res) {
     const list = await prisma.list.create({
       data: {
         name,
+        budget,
         users: {
           create: [{ userId: user.id}],
         },
         status: "new",
-        budget
+        
       },
     });
     return res.status(201).json(list);
