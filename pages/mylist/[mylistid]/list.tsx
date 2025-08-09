@@ -161,15 +161,17 @@ export function MyList() {
         {/* <div className="item-container"> */}
           {items ? items.map((item) => (
             <div key={`row${item.id}${Date.now()}`} className="item-label">
-              <button className="item-button bg-blue-500 hover:bg-blue-700 text-white font-bold highbutton"
+              <button 
+              // key={`row${item.id}${Date.now()}`}
+              className="item-button bg-blue-500 hover:bg-blue-700 text-white font-bold"
               onClick={() => takeItem(item.id)}
               > <span 
               className="item-name-ctrl"
-                >Ⰰ {item.name}</span><button
-              className="item-count-ctrl"
-              >{item.count}</button><span 
-              className="inputty">➾</span></button>
-            </div>
+                >Ⰰ {item.name}</span><span 
+                  className="inputty">➾</span><button
+                    className="item-count-ctrl"
+                  >{item.count}</button></button>
+          </div>
           )) : router.push("/dashboard")}
         {/* </div> */}
 

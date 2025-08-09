@@ -16,13 +16,15 @@ import BiButton from "@/components/Button";
 import InputField from "@/components/Input";
 import { setInvisibleUA, setToListInput, setVisibleUA } from "@/lib/slices/dashboardSlice";
 
-export default function Dashboard() {
+export default function Budgets() {
 
   const dispatch = useAppDispatch()
   const { data: session, status } = useSession();
   const [lists, setLists] = useState([]);
   const [newListName, setNewListName] = useState("");
-  const [newItemName, setNewItemName] = useState({});
+  const [newSaleName, setNewSaleName] = useState({});
+  const [newBudget, setNewBudget] = useState(0);
+  const [newSale, setNewSale] = useState({})
   // const [loading, setLoading] = useState(false);
 
   //const [newUserInput, setNewUserInput] = useState("")
@@ -40,16 +42,18 @@ export default function Dashboard() {
     const data = await res.json();
     
     setLists(data);
+    console.log(JSON.stringify(data))
   };
 
   const createList = async () => {
-    if (!newListName) return;
+    if (!newBudget) return;
     await fetch("/api/lists/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: newListName }),
+      body: JSON.stringify({ name: newListName, budget: newBudget }),
     });
     setNewListName("");
+    setNewBudget(0);
     fetchLists();
   };
 
@@ -57,26 +61,29 @@ export default function Dashboard() {
 
   }
 
-  const addItem = async (listId: string) => {
-    const name = newItemName[listId];
-    if (!name) return;
-    await fetch(`/api/lists/${listId}/items/addit`, {
+  const addSale = async (listId: string) => {
+    const name = newSaleName[listId];
+    const sale = newSale[listId]
+    // if (!name) return;
+    if (!sale) return;
+    await fetch(`/api/lists/${listId}/sales/add`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, listId }),
+      body: JSON.stringify({ name, listId, price: sale }),
     });
-    setNewItemName((prev) => ({ ...prev, [listId]: "" }));
+    setNewSaleName((prev) => ({ ...prev, [listId]: "" }));
+    setNewSale((prev) => ({ ...prev, [listId]: 0 }));
     fetchLists();
   };
 
 
 
-  const deleteItem = async (listId: string, itemId: string) => {
+  const deleteSale = async (listId: string, itemId: string) => {
     dispatch(setListId(listId))
     dispatch(setItemId(itemId))
     dispatch(setAct("delete"))
-    dispatch(setSubject("item"))
-    dispatch(setConfirmation("Do you really want to remove the item?"))
+    dispatch(setSubject("sale"))
+    dispatch(setConfirmation("Do you really want to remove this transaction?"))
 
     // await fetch(`/api/lists/${listId}/items/${itemId}/delete`, {
     //   method: "DELETE",
@@ -110,19 +117,25 @@ export default function Dashboard() {
         <div className="dashboard-container">
       <Link key="signoutlink" href = "login" onClick={() => signOut()}>Sign out</Link>
       <span className="space-maker">   |   </span>
-      <Link key='LinkToBudget' href={'budgets'}>
-       Budgets
-      </Link>
+      <Link key="LinkToDashboard" href="dashboard" > Roster </Link>
           <div className="dashboard-head">
             <h2>{session.user.email}</h2>
             <h3>Create New List</h3>
             <div className="create-list">
               <input
+                type="text"
                 value={newListName}
                 onChange={(e) => setNewListName(e.target.value)}
                 placeholder="List name"
-                onKeyUp={(e) => e.key === "Enter" ? createList() : null}
+                // onKeyUp={(e) => e.key === "Enter" ? createList() : null}
               />
+            <input
+              type="number"
+              value={newBudget}
+            onChange={(e) => setNewBudget(parseFloat(e.target.value))}
+              placeholder="List Budget"
+              onKeyUp={(e) => e.key === "Enter" ? createList() : null}
+            />
               <button onClick={createList}>Create</button>
             </div>
             <AddUser />
@@ -134,11 +147,12 @@ export default function Dashboard() {
         {lists.map((list) => (
           <div className="list-container" key={list.id} >
             <div className="link-to-list">
-              <Link key={`LinkTo${list.id}`} href={`mylist/${list.id}/list`}>{list.name}</Link>
+              <Link key={`LinkTo${list.id}`} href={`mylist/${list.id}/budget`}>{list.name}</Link>
             </div>
             <div className="list-users">{list.users.map((user, index) => (
               <span key={`user-${list.id}-${index+1}`}>{` ${user};`}</span>
             ))} </div>
+            <div className="list-budgets">{list.budget}</div>
             <div className="list-settings">
               <button onClick={() => deleteList(list.id)}>Delete List</button>
               <button
@@ -151,11 +165,12 @@ export default function Dashboard() {
 
 
             <div className="items-container">
-              {list.items.map((item) => (
-                <div key={item.id} className="lists-item">
-                  <span className="item-text">ⱝ {item.name}</span>
-                  <button className="remove-item" onClick={() => deleteItem(list.id, item.id)} >×</button>
-                  <span className="item-count"> × {item.count}</span>
+              {list.sales.map((sale) => (
+                <div key={sale.id} className="lists-item">
+                  <span className="item-text">{sale.name}</span>
+                  <span className="item-value">ⱝ {sale.price}</span>
+                  <button className="remove-item" onClick={() => deleteSale(list.id, sale.id)} >×</button>
+                  <span className="item-count"> × {sale.count}</span>
                 </div>
               ))}
             </div>
@@ -164,14 +179,23 @@ export default function Dashboard() {
               <input
                 className="add-item-content"
                 placeholder="New item"
-                value={newItemName[list.id] || ""}
+                value={newSaleName[list.id] || ""}
                 onChange={(e) =>
-                  setNewItemName((prev) => ({ ...prev, [list.id]: e.target.value }))
+                  setNewSaleName((prev) => ({ ...prev, [list.id]: e.target.value }))
                 }
-                onKeyUp={(e) => e.key === "Enter" ? addItem(list.id) : null}
+                onKeyUp={(e) => e.key === "Enter" ? addSale(list.id) : null}
+              />
+              <input
+                className="add-item-content"
+                placeholder="How many"
+                value={newSale[list.id] || ""}
+                onChange={(e) =>
+                  setNewSale((prev) => ({ ...prev, [list.id]: e.target.value }))
+                }
+                onKeyUp={(e) => e.key === "Enter" ? addSale(list.id) : null}
               />
               <button
-                onClick={() => addItem(list.id)}
+                onClick={() => addSale(list.id)}
                 className="add-item-content rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10"
               > Add </button>
             </div>

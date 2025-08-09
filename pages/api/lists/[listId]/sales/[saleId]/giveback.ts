@@ -34,28 +34,30 @@ export default async function handler(req, res) {
     });
     // console.log(JSON.stringify(list))
 
-    if (list.sales[0].count > 1) {
-      await prisma.sale.update({
-        where: { id: list.sales[0].id },
-        data: { count: list.sales[0].count - 1 }
-      })
-    } else {
-      await prisma.sale.delete({ where: { id: saleId } });
-     
-
-    }
+   await prisma.$transaction(async (ts) => {
+     if (list.sales[0].count > 1) {
+       await ts.sale.update({
+         where: { id: list.sales[0].id },
+         data: { count: list.sales[0].count - 1 }
+       })
+     } else {
+       await ts.sale.delete({ where: { id: saleId } });
 
 
-    if (list.items.length > 0) {
-      await prisma.item.update({
-        where: { id: saleId },
-        data: { count: list.items[0].count + 1 }
-      })
-    } else {
-      await prisma.item.create({
-        data: { id: saleId, name: list.sales[0].name, listId, price: 0.6, status: "new", count: 1 },
-      });
-    }
+     }
+
+
+     if (list.items.length > 0) {
+       await ts.item.update({
+         where: { id: saleId },
+         data: { count: list.items[0].count + 1 }
+       })
+     } else {
+       await ts.item.create({
+         data: { id: saleId, name: list.sales[0].name, listId, price: 0, status: "new", count: 1 },
+       });
+     }
+   })
 
     return res.status(204).end();
   }

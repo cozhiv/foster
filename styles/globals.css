@@ -54,6 +54,13 @@
   position: relative;
 }
 
+.sale-price-ctrl {
+  top: -2px;
+  font-size: 12pt;
+  left: 5px;
+  margin-right:5px;
+}
+
 .sale-name-ctrl {
   /* color: #0a0a0af0; */
   color: #123344;
@@ -88,14 +95,36 @@
 }
 
 .input-container{
-  gap: 0;
+  gap: 4;
 }
+
+.control-sale-container {
+  display:flex;
+}
+
+.legend {
+  font-size: 3vh;
+  height: 6vh;
+  margin : 2px 4px auto 0
+
+}
+
+button.submit-sum {
+  height: 100%;
+  min-width: 50px;
+}
+/* .input-sale-container {
+  display: flex;
+  gap: 4;
+  align-self:auto;
+  max-width: 100%;
+} */
 
 .input-container > button {
   min-width: 100px;
 }
 
-.containers{
+.containers {
   padding:2px;
 }
 
@@ -107,8 +136,11 @@
   max-width: 50%;
   overflow: hidden;
   color: #123344;
+  min-height: 54px;
+
 }
 .item-label > button {
+  padding: 5px 5px 5px 5px;
   min-height: 50px;
   text-align: center;
   word-wrap: break-word;
@@ -124,10 +156,10 @@
 
  @media screen and (max-width: 500) {
   .item-label {
-    max-width: 100%;
+   min-width: 100%;
   }
   .item-label > button{
-    max-width: 100%;
+    min-width: 98%;
   }
  }
  /* @media screen and (max-width: 355) {
@@ -194,7 +226,9 @@ a1 {
 
 .signup-inputs {
   flex: 90%;
-
+}
+.signup-inputs > button:last-child {
+  margin-left: 6px;
 }
 
 .signup-line{
@@ -206,18 +240,42 @@ input.signup-line {
   color: #796f80;
   height: 8vh;
   border-radius: 3px;
+  background-image: linear-gradient(to right, #eff3f6, #e1e9ed);
   /* opacity: 6; */
   /* box-shadow:  1 1 1 1  rgb(60, 60, 44); */
+  /* border: none;
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344; */
   
 }
+
+
+button.signup-line {
+  color: #796f80;
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+  border-radius: 3px;
+  background-image: linear-gradient(to right, #eff3f6, #e1e9ed);
+}
+
 input.signup-line:focus {
   /* opacity: 6; */
   /* box-shadow: 2 2 1 1  rgb(60, 60, 44); */
   background-color: #e5ffed;
   color: #74588a;
+  background-image: linear-gradient(to right, #e5ffed, #e1e9ed);
   outline: 0;
   opacity: 0.8;
+  /* outline: 0;
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344; */
 }
+
+/* button.signup-line {
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+  color: #796f80;
+  height: 8vh;
+  border-radius: 3px;
+  background-image: linear-gradient(to right, #eff3f6, #e1e9ed);
+} */
+
 
 #submit-signup {
   margin: 30px auto auto 0;
@@ -267,6 +325,11 @@ a {
     height: 7vh;
     font-size: 3vh;
   }
+
+  .legend {
+    height: 7vh;
+    font-size: 3vh;
+  }
 }
 
 @media screen and (min-height: 600) {
@@ -276,6 +339,9 @@ a {
     font-size: 2vh;
   }
   input.signup-line {
+    height: 5vh;
+  }
+  .legend{
     height: 5vh;
   }
   .linkbar{
@@ -290,6 +356,10 @@ a {
     font-size: 1vh;
   }
   input.signup-line {
+    height: 4vh;
+    font-size: 3vh;
+  }
+  .legend {
     height: 4vh;
     font-size: 3vh;
   }
@@ -312,6 +382,11 @@ a {
     height: 3vh;
     font-size: 2vh;
   }
+
+  .legend {
+    height: 3vh;
+    font-size: 2vh;
+  }
 }
 
 @media screen and (min-height: 1200) {
@@ -322,26 +397,25 @@ a {
   input.signup-line {
     height: 2vh;
     font-size: 1vh;
-
+  }
+  .legend {
+    height: 2vh;
+    font-size: 1vh;
   }
 }
 
 
-
-
 .remove-item {
   border-radius: 4px;
-  border: 1px solid #530394;
   background-color: white;
-  font-size: 11pt;
+  font-size: 9pt;
   top: -8px;
-  margin: auto auto auto 3px;
+  margin: auto auto auto 4px;
   position: relative;
 }
 
 .item-count {
   font-size: 10pt;
-  left: -2px;
   position: relative;
 }
 
@@ -357,7 +431,7 @@ a {
   margin: 0 0 10;
   display: flex;
   justify-content: stretch;
-  gap: 2px;
+  gap: 6px;
 }
 .list-settings > button {
   flex: 100%;
@@ -368,13 +442,19 @@ a {
   margin: 0 0 10;
   display: flex;
   justify-content: stretch;
+  gap: 4px;
 }
-.add-item-content {
+/* .add-item-content {
   flex: 100%;
-}
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+} */
 .add-item > button {
   height: 34px;
+  /* box-shadow: 2px 2px 3px #123344, 1px -1px 2px #123344; */
 }
+/* .add-item > input {
+  box-shadow: 0px 2px 2px #123344, -1px -1px 2px #123344;
+} */
 
 .lists-container {
   display:flex;
@@ -400,6 +480,13 @@ a {
   padding: 24px;
   color:#123344;
 }
+.dashboard-container input {
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+}
+.dashboard-container button {
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+}
+
 .dashboard-head {
   max-width: 500px;
   margin: 0 auto 0 auto;
@@ -413,6 +500,7 @@ a {
 .create-list {
   display: flex;
   margin: 0 0 0 5px;
+  gap: 4;
   
 }
 
@@ -422,7 +510,7 @@ a {
 }
 
 .create-list > button {
-  height: 40px;
+  height: 36px;
 }
 /* .item-button {
   background-color: #678ba7f0;
@@ -529,11 +617,13 @@ body {
   opacity: 0.9;
 }
 input[type="text"] {
-  background-color: #eff3f6;
+  /* background-color: #eff3f6; */
+  background-image: linear-gradient(to right, #eff3f6, #e1e9ed);
 }
 
 input[type="password"] {
-  background-color: #eff3f6;
+  /* background-color: #eff3f6; */
+  background-image: linear-gradient(to right, #eff3f6, #e1e9ed);
 }
 textarea {
   background-color: #eff3f6;
@@ -548,12 +638,32 @@ textarea {
 }
 
 input {
-  opacity:0.8;
+  opacity:0.9;
   border: none;
   box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+}
+
+input:focus{
+  outline: 0;
 }
 
 button {
   border: none;
   box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
 }
+
+.add-item-ctrl {
+  border: none;
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+}
+textarea:focus {
+  outline: 0;
+}
+
+/* .item-name-ctrl {
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+} */
+/* .add-item-ctrl:focus {
+  outline: 0;
+  box-shadow: 2px 0px 3px #123344, -1px -1px 2px #123344;
+} */

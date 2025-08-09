@@ -75,6 +75,7 @@ model List {
   id       String   @id @default(cuid())
   name     String
   status   String
+  budget   Float
   users    UserList[]
   items    Item[]
   sales    Sale[]

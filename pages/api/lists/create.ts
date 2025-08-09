@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   if (!session) return res.status(401).json({ error: "Unauthorized" });
 
   if (req.method === "POST") {
-    const { name } = req.body;
+    const { name, budget = 0 } = req.body;
     const user = await prisma.user.findUnique({ where: { email: session.user.email } });
     const list = await prisma.list.create({
       data: {
@@ -15,7 +15,8 @@ export default async function handler(req, res) {
         users: {
           create: [{ userId: user.id}],
         },
-        status: "new"
+        status: "new",
+        budget
       },
     });
     return res.status(201).json(list);

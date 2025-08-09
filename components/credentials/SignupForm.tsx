@@ -1,3 +1,5 @@
+// import { signUp } from "next-auth/react";
+
 import { InputEventHandler, useState, useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";

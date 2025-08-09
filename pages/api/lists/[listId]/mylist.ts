@@ -18,6 +18,7 @@ export default async function handler(req, res) {
     include: {
       items: true,
       sales: true,
+      //budget: true,
       users: {
         include: {
           user: true,

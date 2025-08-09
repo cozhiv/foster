@@ -35,6 +35,14 @@ const ConfirmationButtons = function ({ children, callback }: ConfirmationButton
     dispatch(hideConfirmation())
   };
 
+  const deleteSale = async () => {
+    await fetch(`/api/lists/${listId}/sales/${itemId}/delete`, {
+      method: "DELETE",
+    });
+    callback();
+    dispatch(hideConfirmation())
+  }
+
   const deleteList = async () => {
     await fetch(`/api/lists/${listId}/delete`, {
       method: "DELETE",
@@ -66,6 +74,16 @@ const ConfirmationButtons = function ({ children, callback }: ConfirmationButton
             <div className="confirmation-buttons">
               <button className="confirmation-button" onClick={handleCancel}>No</button>
               <button className="confirmation-button" onClick={deleteItem}> Yes </button>
+              <div className="confirmation-children" >{children}</div>
+            </div>
+          </div>
+        )
+      case "sale":
+        return (
+          <div>
+            <div className="confirmation-buttons">
+              <button className="confirmation-button" onClick={handleCancel}>No</button>
+              <button className="confirmation-button" onClick={deleteSale}> Yes </button>
               <div className="confirmation-children" >{children}</div>
             </div>
           </div>

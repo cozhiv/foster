@@ -35,27 +35,29 @@ export default async function handler(req: any, res) {
     });
     // console.log(JSON.stringify(list))
 
-    if (list.sales.length > 0) {
-      await prisma.sale.update({
-        where: { id: list.sales[0].id },
-        data: { count: list.sales[0].count + 1 }
-      })
-    } else {
-      await prisma.sale.create({
-        data: { id: itemId, name: list.items[0].name, listId, price: 0.6, status: "new", userEmail, count: 1},
-      });
+   await prisma.$transaction(async (ts) => {
+     if (list.sales.length > 0) {
+       await ts.sale.update({
+         where: { id: list.sales[0].id },
+         data: { count: list.sales[0].count + 1 }
+       })
+     } else {
+       await ts.sale.create({
+         data: { id: itemId, name: list.items[0].name, listId, price: 0, status: "new", userEmail, count: 1 },
+       });
 
-    }
+     }
 
 
-    if (list.items[0].count > 1) {
-      await prisma.item.update({
-        where: { id: itemId },
-        data: { count: list.items[0].count - 1 }
-      })
-    } else {
-      await prisma.item.delete({ where: { id: itemId } });
-    }
+     if (list.items[0].count > 1) {
+       await ts.item.update({
+         where: { id: itemId },
+         data: { count: list.items[0].count - 1 }
+       })
+     } else {
+       await ts.item.delete({ where: { id: itemId } });
+     }
+   })
 
     return res.status(204).end();
   }

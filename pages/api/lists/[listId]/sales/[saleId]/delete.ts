@@ -14,8 +14,10 @@ export default async function handler(req, res) {
     const authorized = await isUserAuthorizedForList(session.user.email, listId);
     if (!authorized) return res.status(403).json({ error: "Forbidden" });
 
-    await prisma.sale.delete({ where: { id: saleId } });
-
+    await prisma.$transaction(async (tr) => {
+      await tr.sale.delete({ where: { id: saleId } });
+      await tr.item.delete({ where: { id: saleId } });
+    })
 
     return res.status(204).end();
   }

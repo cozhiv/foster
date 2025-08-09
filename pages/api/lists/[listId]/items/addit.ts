@@ -10,7 +10,9 @@ export default async function handler(req, res) {
   if (!session) return res.status(401).json({ error: "Unauthorized" });
 
   if (req.method === "POST") {
-    const { name } = req.body;
+    const { name,} = req.body;
+    let { price = 0 } = req.body
+    price = parseFloat(price);
     const { listId } = req.query;
 
 
@@ -37,7 +39,7 @@ export default async function handler(req, res) {
 
     if (list.items.length === 0) {
       const item = await prisma.item.create({
-        data: { name, listId, price: 0.6, status: "new", count: 1 },
+        data: { name, listId, price, status: "new", count: 1 },
       });
       return res.status(201).json(item);
     } else {
@@ -46,7 +48,7 @@ export default async function handler(req, res) {
       const itemId = list.items[0].id
       const item = await prisma.item.update({
         where: { id: itemId },
-        data: { count: listCount + 1 }
+        data: { count: listCount + 1, price }
       })
       return res.status(204).end();
     }
