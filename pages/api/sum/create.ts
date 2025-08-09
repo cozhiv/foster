@@ -7,12 +7,12 @@ export default async function handler(req, res) {
   if (!session) return res.status(401).json({ error: "Unauthorized" });
 
   if (req.method === "POST") {
-    const { name, sum } = req.body;
+    const { name, value } = req.body;
     const user = await prisma.user.findUnique({ where: { email: session.user.email } });
     const list = await prisma.sum.create({
       data: {
         name,
-        sum,
+        value,
         users: {
           create: [{ userId: user.id }],
         },
