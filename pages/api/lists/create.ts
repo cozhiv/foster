@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 
 export default async function handler(req, res) {
   const session: any = await getServerSession(req, res, authOptions);
-  if (!session) return res.status(401).json({ error: "Unauthorized" });
+  if   (!session) return res.status(401).json({ error: "Unauthorized" });
 
   if (req.method === "POST") {
     const { name, budget = 0 } = req.body;

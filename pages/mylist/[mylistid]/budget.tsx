@@ -116,7 +116,9 @@ export function MyList() {
         setSales(d.sales)
         setUsers(d.users)
         setBudget(d.budget)
-        setBudgetLeft(d.budget - d.sales.reduce((c, i) => c + parseFloat(i.price), 0))
+        if (d.sales) {
+          setBudgetLeft(d.budget - d.sales.reduce((c, i) => c + parseFloat(i.price), 0))
+        }
         // if (d.sales) {
         //   budgetLeft.current = d.budget - d.sales.reduce((c, i) => c + parseFloat(i.price), 0)
         // }
@@ -177,8 +179,8 @@ export function MyList() {
     <div className="list-execution">
       <Link className="" key={'LinkToBudget'} href={'../../budgets'}>Budget Settings</Link>
       <h3>{title}</h3>
-      <h4>{budget}</h4>
-      <h4>{budgetLeft}</h4>
+      <h4>{budget + "     budget"}</h4>
+      <h4>{budgetLeft + "       left"}</h4>
       {/* <h3>Content balance: {count}</h3> */}
       <div className="users-in-list">Users: {users ? users.map((user, index) => (
         <span key={`listUsers${user}${index}`}>{user};</span>
@@ -199,22 +201,22 @@ export function MyList() {
     <div className="">
       <div className="control-sale-container">
         <div className="input-sale-container">
-          <div className="singnup-imputs">
+          <div className="signup-inputs">
               <div className="legend signup-line"
               > ⰽ </div>
           </div>
         
-            <div className="singnup-imputs">
+            <div className="signup-inputs">
               <div className="legend signup-line"
               > ⰾ </div>
             </div>
-            <div className="singnup-imputs">
+            <div className="signup-inputs">
               <div className="legend signup-line"
               > € </div>
             </div>
         </div>
         <div className="input-sale-container">
-            <div className="singnup-imputs">
+            <div className="signup-inputs">
               <input
                 className="signup-line"
                 value={name}
