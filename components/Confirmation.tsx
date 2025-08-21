@@ -82,8 +82,8 @@ const ConfirmationButtons = function ({ children, callback }: ConfirmationButton
         return (
           <div>
             <div className="confirmation-buttons">
-              <button className="confirmation-button" onClick={handleCancel}>No</button>
-              <button className="confirmation-button" onClick={deleteSale}> Yes </button>
+              <button className="confirmation-button" onClick={handleCancel}>ⱌ No</button>
+              <button className="confirmation-button" onClick={deleteSale}>ⱔ Yes</button>
               <div className="confirmation-children" >{children}</div>
             </div>
           </div>

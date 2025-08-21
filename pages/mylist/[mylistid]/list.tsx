@@ -121,7 +121,7 @@ export function MyList() {
     dispatch(decrement())
   };
 
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <p>Ⰿ Loading...</p>;
   if (!session) router.push("/login");
   return (
     <div className="list-execution">
@@ -139,7 +139,7 @@ export function MyList() {
               <div key={`row${sale.id}${Date.now()}`} className="salel-label">
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold highbutton"
                   onClick={() => turnBackSale(sale.id)}
-                ><span className="sale-name-ctrl">{sale.name}</span><button className="sale-count-ctrl">{sale.count}</button> <span style={{color: "green"}}>✓</span></button>
+                ><span className="sale-name-ctrl">{sale.name}</span><span className="sale-count-ctrl">{sale.count}</span> <span style={{color: "green"}}>✓</span></button>
               </div>
             )) : router.push("/dashboard")}
 
@@ -168,9 +168,9 @@ export function MyList() {
               > <span 
               className="item-name-ctrl"
                 >Ⰰ {item.name}</span><span 
-                  className="inputty">➾</span><button
+                  className="inputty">➾</span><span
                     className="item-count-ctrl"
-                  >{item.count}</button></button>
+                  >{item.count}</span></button>
           </div>
           )) : router.push("/dashboard")}
         {/* </div> */}

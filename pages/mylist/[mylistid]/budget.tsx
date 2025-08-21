@@ -173,14 +173,14 @@ export function MyList() {
     dispatch(decrement())
   };
 
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <p>Ⰿ Loading...</p>;
   if (!session) router.push("/login");
   return (
     <div className="list-execution">
       <Link className="" key={'LinkToBudget'} href={'../../budgets'}>Budget Settings</Link>
       <h3>{title}</h3>
-      <h4>{budget + "     budget"}</h4>
-      <h4>{budgetLeft + "       left"}</h4>
+      <h4>{"ⱂ          " + budget}</h4>
+      <h4>{"ⱀ          " + budgetLeft}</h4>
       {/* <h3>Content balance: {count}</h3> */}
       <div className="users-in-list">Users: {users ? users.map((user, index) => (
         <span key={`listUsers${user}${index}`}>{user};</span>
@@ -208,7 +208,7 @@ export function MyList() {
         
             <div className="signup-inputs">
               <div className="legend signup-line"
-              > ⰾ </div>
+              > ⱁ </div>
             </div>
             <div className="signup-inputs">
               <div className="legend signup-line"
@@ -269,13 +269,13 @@ export function MyList() {
               > <span 
               className="item-name-ctrl"
                 > {sale.name} </span> <span className="sale-title"> Ⰰ </span>
-                <button
+                <span
                   className="item-count-ctrl sale-price-ctrl"
-                >{roundOn3rd(parseFloat(sale.price)/levro)}</button>
+                  >{roundOn3rd(parseFloat(sale.price) / levro)}€</span>
                 <span 
-                  className="e-and-l"> ⰻ </span><button
+                  className="e-and-l"> ⰻ </span><span
                     className="item-count-ctrl sale-price-ctrl"
-                  >{sale.price}</button></button>
+                  >{sale.price}лв</span></button>
           </div>
           )}) : router.push("/dashboard")}
         {/* </div> */}

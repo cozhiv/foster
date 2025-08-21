@@ -110,7 +110,7 @@ export default function Budgets() {
   }
 
 
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <p>Ⰿ Loading...</p>;
   if (!session) return router.push("login");
 
   return (

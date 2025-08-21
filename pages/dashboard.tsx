@@ -103,14 +103,14 @@ export default function Dashboard() {
   }
 
 
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <p>Ⰿ Loading...</p>;
   if (!session) return router.push("login");
 
   return (
         <div className="dashboard-container">
       <Link key="signoutlink" href = "login" onClick={() => signOut()}>Sign out</Link>
       <span className="space-maker">   |   </span>
-      <Link key='LinkToBudget' href={'budgets'}>
+      <Link key='LinkToBudget' href={'budgets'}>  
        Budgets
       </Link>
           <div className="dashboard-head">
@@ -151,7 +151,7 @@ export default function Dashboard() {
 
 
             <div className="items-container">
-              {list.items.map((item) => (
+              वस्तु {list.items.map((item) => (
                 <div key={item.id} className="lists-item">
                   <span className="item-text">ⱝ {item.name}</span>
                   <button className="remove-item" onClick={() => deleteItem(list.id, item.id)} >×</button>

@@ -50,6 +50,10 @@
   background-color: rgb(217, 221, 218);
   font-size: 9pt;
   top: -8px;
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+  padding: 0 4px;
+  font-size: 10pt;
+
   
   position: relative;
 }
@@ -69,6 +73,8 @@
   border-radius: 20px;
   border: none;
   background-color: rgb(217, 221, 218);
+  padding: 0 3px;
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
   font-size: 8pt;
   top: -5px;
   position: relative;
