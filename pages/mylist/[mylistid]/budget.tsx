@@ -268,12 +268,12 @@ export function MyList() {
               onClick={() => takeItem(sale.id)}
               > <span 
               className="item-name-ctrl"
-                > {sale.name} </span> <span className="sale-title"> Ⰰ </span>
+                  >Ⰰ {sale.name} </span> <span className="sale-title"> </span>
                 <span
                   className="item-count-ctrl sale-price-ctrl"
                   >{roundOn3rd(parseFloat(sale.price) / levro)}€</span>
                 <span 
-                  className="e-and-l"> ⰻ </span><span
+                    className="e-and-l"> Ⱐ </span><span
                     className="item-count-ctrl sale-price-ctrl"
                   >{sale.price}лв</span></button>
           </div>
