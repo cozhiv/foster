@@ -29,7 +29,7 @@ const roundOn3rd = (val) => {
   //     return parseFloat(decimalcut)
   //   }
   // }
-  return Math.round(val * 100) / 100
+  return String(Math.round(parseFloat(val) * 100) / 100)
 }
 
 let socket //: Socket
@@ -76,20 +76,29 @@ export function MyList() {
   const [ name, setName ] = useState('');
   const [ title, setTitle ] = useState("")
   const [ users, setUsers ] = useState([])
-  const [ lev, setLev] = useState(null)
-  const [ euro, setEuro ] = useState(null)
+  const [ lev, setLev] = useState('')
+  const [ euro, setEuro ] = useState('')
   const [ budget, setBudget ] = useState("");
   const [ budgetLeft, setBudgetLeft ] = useState(0)
   // const budgetLeft = useRef(0);
   
-
+ const isNumb = (value) => {
+   const isnum = /^\d+$/.test(value);
+   if (isnum) {
+     return Number(value)
+   }
+  }
 
   const nullSum = () => {
-    setEuro(null)
-    setLev(null)
+    setEuro('')
+    setLev('')
     
   }
   const handleLev = (value) => {
+
+    
+
+
     if (value === 0 || value == null) {
       nullSum()
     } else {
@@ -137,11 +146,12 @@ export function MyList() {
       body: JSON.stringify({ name, listId: mylistid, price: lev}),
       headers: { "Content-Type": "application/json" },
     });
+    nullSum()
     setName('');
     // setRend((prev) => prev + 1);
-    nullSum()
+    
     dispatch(increment())
-
+    
     // console.log(added)
     if (added) {
       socket.emit('add', JSON.stringify({ name, listId: mylistid }))

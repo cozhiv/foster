@@ -108,7 +108,7 @@ export default function Budgets() {
     // setInvisibleUA(false)
     dispatch(setToListInput(listId))
   }
-  console.log(JSON.stringify(lists))
+  // console.log(JSON.stringify(lists))
 
   if (status === "loading") return <p>Ⰿ Loading...</p>;
   if (!session) return router.push("login");
