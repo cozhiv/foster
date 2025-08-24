@@ -134,7 +134,7 @@ export default function Dashboard() {
         {lists.map((list) => (
           <div className="list-container" key={list.id} >
             <div className="link-to-list">
-              <Link key={`LinkTo${list.id}`} href={`mylist/${list.id}/list`}>{list.name}</Link>
+              <Link key={`LinkTo${list.id}`} href={`mylist/${list.id}/${list.staus}`}>{list.name}</Link>
             </div>
             <div className="list-users">{list.users.map((user, index) => (
               <span key={`user-${list.id}-${index+1}`}>{` ${user};`}</span>

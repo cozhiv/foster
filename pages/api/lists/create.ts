@@ -16,7 +16,7 @@ export default async function handler(req, res) {
         users: {
           create: [{ userId: user.id}],
         },
-        status: "new",
+        status: budget?"budget":"roster",
         
       },
     });
