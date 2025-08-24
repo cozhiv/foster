@@ -87,9 +87,10 @@ export function MyList() {
   const nullSum = () => {
     setEuro(null)
     setLev(null)
+    
   }
   const handleLev = (value) => {
-    if (value === 0) {
+    if (value === 0 || value == null) {
       nullSum()
     } else {
       setEuro(roundOn3rd(value / levro))
@@ -99,7 +100,7 @@ export function MyList() {
   }
 
   const handleEuro = (value) => {
-    if (value === 0) {
+    if (value === 0 || value == null) {
       nullSum()
     } else {
       setLev(roundOn3rd(value * levro))
@@ -138,7 +139,9 @@ export function MyList() {
     });
     setName('');
     // setRend((prev) => prev + 1);
+    nullSum()
     dispatch(increment())
+
     // console.log(added)
     if (added) {
       socket.emit('add', JSON.stringify({ name, listId: mylistid }))
@@ -179,8 +182,8 @@ export function MyList() {
     <div className="list-execution">
       <Link className="" key={'LinkToBudget'} href={'../../budgets'}>Budget Settings</Link>
       <h3>{title}</h3>
-      <h4>{"ⱂ          " + budget}лв</h4>
-      <h4>{"ⱀ          " + budgetLeft}лв</h4>
+      <h4><span className="glagolitic">ⱂ</span>{"          " + budget}лв</h4>
+      <h4><span className="glagolitic">ⱀ</span>{"          " + budgetLeft}лв</h4>
       {/* <h3>Content balance: {count}</h3> */}
       <div className="users-in-list">Users: {users ? users.map((user, index) => (
         <span key={`listUsers${user}${index}`}>{user};</span>
@@ -203,12 +206,12 @@ export function MyList() {
         <div className="input-sale-container">
           <div className="signup-inputs">
               <div className="legend signup-line"
-              > ⰽ </div>
+              > <span className="glagolitic"> ⰽ </span></div>
           </div>
         
             <div className="signup-inputs">
               <div className="legend signup-line"
-              > ⱁ </div>
+              ><span className="glagolitic"> ⱁ </span></div>
             </div>
             <div className="signup-inputs">
               <div className="legend signup-line"
@@ -225,7 +228,7 @@ export function MyList() {
                 onKeyUp={(e) => e.key === "Enter" ? addSale() : null}
               />
             </div>
-            <div className="signup-imputs">
+            <div className="signup-imput">
               <input
                 type="number"
                 className="signup-line"
@@ -268,14 +271,17 @@ export function MyList() {
               onClick={() => takeItem(sale.id)}
               > <span 
               className="item-name-ctrl"
-                  >Ⰰ {sale.name} </span> <span className="sale-title"> </span>
-                <span
-                  className="item-count-ctrl sale-price-ctrl"
-                  >{roundOn3rd(parseFloat(sale.price) / levro)}€</span>
-                <span 
-                    className="e-and-l"> Ⱐ </span><span
-                    className="item-count-ctrl sale-price-ctrl"
-                  >{sale.price}лв</span></button>
+                  ><span className="glagolitic">Ⰰ</span> {sale.name} </span> <span className="sale-title"> </span>
+                <span className="linedup">
+                    <span
+                      className="item-count-ctrl sale-price-ctrl"
+                    >{roundOn3rd(parseFloat(sale.price) / levro)}€</span>
+                    <span
+                      className="e-and-l"> <span className="glagolitic">Ⱐ</span> </span><span
+                        className="item-count-ctrl sale-price-ctrl"
+                      >{sale.price}лв</span>
+                </span>
+                </button>
           </div>
           )}) : router.push("/dashboard")}
         {/* </div> */}

@@ -3,6 +3,33 @@
 @tailwind utilities;
 
 
+
+
+
+@font-face {
+
+  font-family: "BgCyril";
+
+  src: url("/fonts/Azbuki-Regular.woff2") format("woff2");
+
+  font-weight: 400;
+
+  font-style: normal;
+
+}
+
+@font-face {
+
+  font-family: "Glagolitic";
+
+  src: url("/fonts/NotoSansGlagolitic-Regular.ttf") format("ttf");
+
+  font-weight: 400;
+
+  font-style: normal;
+
+}
+
 .invisible {
   visibility: hidden;
 }
@@ -44,15 +71,21 @@
   /* color: #0a0a0af0; */
   color: #123344;
 }
+
+
+.linedup {
+  float:right;
+}
+
 .item-count-ctrl {
   border-radius: 20px;
   border: none;
   background-color: rgb(217, 221, 218);
-  font-size: 9pt;
   top: -8px;
-  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
-  padding: 0 4px;
-  font-size: 10pt;
+  box-shadow: 3px 2px 3px #123344, -1px -1px 2px #123344;
+  padding: 2px 6px;
+  font-size: 11pt;
+  word-break: keep-all;
 
   
   position: relative;
@@ -63,6 +96,7 @@
   font-size: 12pt;
   left: 5px;
   margin-right:5px;
+  word-break: keep-all;
 }
 
 .sale-name-ctrl {
@@ -74,14 +108,16 @@
   border: none;
   background-color: rgb(217, 221, 218);
   padding: 0 3px;
-  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+  box-shadow: 6px 2px 3px #123344, -1px -1px 2px #123344;
   font-size: 8pt;
   top: -5px;
   position: relative;
 }
 
 .add-item-ctrl {
-  font-size: 15pt;
+  font-size: 16pt;
+  border: none;
+  box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
 }
 
 .sales-container {
@@ -118,7 +154,9 @@
 button.submit-sum {
   height: 100%;
   min-width: 50px;
+  margin: auto 0 auto 4px;
 }
+
 /* .input-sale-container {
   display: flex;
   gap: 4;
@@ -151,7 +189,7 @@ button.submit-sum {
   text-align: center;
   word-wrap: break-word;
   word-break: break-all;
-  font-size: 14pt;
+  font-size: 18pt;
   min-width: 200px;
   color: #123344;
   /* width: fit-content;
@@ -450,6 +488,10 @@ a {
   justify-content: stretch;
   gap: 4px;
 }
+.item-start {
+  font-size: 11pt;
+  font-weight: bold;
+}
 /* .add-item-content {
   flex: 100%;
   box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
@@ -457,6 +499,9 @@ a {
 .add-item > button {
   height: 34px;
   /* box-shadow: 2px 2px 3px #123344, 1px -1px 2px #123344; */
+}
+.add-item > input {
+  font-size: 18pt;
 }
 /* .add-item > input {
   box-shadow: 0px 2px 2px #123344, -1px -1px 2px #123344;
@@ -476,7 +521,7 @@ a {
   flex-grow: 1;
   align-self: center;
   overflow: hidden;
-  max-width: 500px;
+  max-width: 592px;
   border: 1px solid #ccc;
   margin: 10;
   padding: 10;
@@ -617,11 +662,19 @@ a {
   overflow: hidden;
 }
 
+
+button span.glagolitic {
+  font-family: "Glagolitic";
+}
+
+
 body {
   background-color: #e1e9ed;
   /* text-shadow: #123344 1px 1px 2px; */
   opacity: 0.9;
+  font-family: "BgCyril", "Glagolitic", Arial, Helvetica ;
 }
+
 input[type="text"] {
   /* background-color: #eff3f6; */
   background-image: linear-gradient(to right, #eff3f6, #e1e9ed);
@@ -633,6 +686,7 @@ input[type="password"] {
 }
 textarea {
   background-color: #eff3f6;
+  
 }
 
 .link-to-list {
@@ -647,6 +701,8 @@ input {
   opacity:0.9;
   border: none;
   box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+  font-family: "BgCyril", Arial, Helvetica ;
+
 }
 
 input:focus{
@@ -656,11 +712,15 @@ input:focus{
 button {
   border: none;
   box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+  font-family: "BgCyril", "Glagolitic", Arial, Helvetica ;
 }
 
-.add-item-ctrl {
+/* .add-item-ctrl {
   border: none;
   box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
+} */
+textarea {
+  font-family: "BgCyril", Arial, Helvetica ;
 }
 textarea:focus {
   outline: 0;
@@ -673,3 +733,6 @@ textarea:focus {
   outline: 0;
   box-shadow: 2px 0px 3px #123344, -1px -1px 2px #123344;
 } */
+
+
+

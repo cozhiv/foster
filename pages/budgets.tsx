@@ -108,7 +108,7 @@ export default function Budgets() {
     // setInvisibleUA(false)
     dispatch(setToListInput(listId))
   }
-
+  console.log(JSON.stringify(lists))
 
   if (status === "loading") return <p>Ⰿ Loading...</p>;
   if (!session) return router.push("login");
@@ -120,41 +120,69 @@ export default function Budgets() {
       <Link key="LinkToDashboard" href="dashboard" > Roster </Link>
           <div className="dashboard-head">
             <h2>{session.user.email}</h2>
-            <h3>Create New List</h3>
+            <h3>Create New Budget</h3>
             <div className="create-list">
-              <input
+              {/* <input
                 type="text"
                 value={newListName}
                 onChange={(e) => setNewListName(e.target.value)}
-                placeholder="List name"
+                placeholder="Budget name"
                 // onKeyUp={(e) => e.key === "Enter" ? createList() : null}
               />
             <input
               type="number"
               value={newBudget}
-            onChange={(e) => setNewBudget(parseFloat(e.target.value))}
-              placeholder="List Budget"
+              onChange={(e) => setNewBudget(parseFloat(e.target.value))}
+              placeholder="Budget"
               onKeyUp={(e) => e.key === "Enter" ? createList() : null}
             />
-              <button onClick={createList}>Create</button>
+              <button onClick={createList}>Create</button> */}
+          </div>
+        <div className="control-sale-container">
+          <div className="input-sale-container">
+            <div className="signup-inputs">
+              <input
+                className="signup-line"
+                type="text"
+                value={newListName}
+                onChange={(e) => setNewListName(e.target.value)}
+                placeholder="Budget name"
+              />
             </div>
+            <div className="signup-imputs">
+              <input
+                className="signup-line"
+                type="number"
+                value={newBudget}
+                onChange={(e) => setNewBudget(parseFloat(e.target.value))}
+                placeholder="Budget"
+                onKeyUp={(e) => e.key === "Enter" ? createList() : null}
+              />
+            </div>
+          </div>
+          <div className="input-sale-container">
+            <button
+              className="signup-line submit-sum"
+              onClick={createList}>Create</button>
+          </div>
+        </div>
             <AddUser />
 
-            <h2>Your Lists</h2>
           </div>
+      <h4>Your Budgets:</h4>
           <div className="lists-container">
         {lists.length === 0 && <p>No lists yet</p>}
         {lists.map((list) => (
           <div className="list-container" key={list.id} >
             <div className="link-to-list">
-              <Link key={`LinkTo${list.id}`} href={`mylist/${list.id}/${list.staus}`}>{list.name}</Link>
+              <Link key={`LinkTo${list.id}`} href={`mylist/${list.id}/${list.status}`}>{list.name}</Link>
             </div>
             <div className="list-users">{list.users.map((user, index) => (
               <span key={`user-${list.id}-${index+1}`}>{` ${user};`}</span>
             ))} </div>
             <div className="list-budgets">{list.budget}</div>
             <div className="list-settings">
-              <button onClick={() => deleteList(list.id)}>Delete List</button>
+              <button onClick={() => deleteList(list.id)}>Delete Budget</button>
               <button
                 className="rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10"
                 onClick={() => setUserPanelOpen(list.id)}
@@ -167,15 +195,16 @@ export default function Budgets() {
             <div className="items-container">
               {list.sales.map((sale) => (
                 <div key={sale.id} className="lists-item">
+                  <span className="glagolitic item-start">ⱉ </span>
                   <span className="item-text">{sale.name}</span>
-                  <span className="item-value">ⱝ {sale.price}</span>
+                  <span className="item-value"> {sale.price}</span>
                   <button className="remove-item" onClick={() => deleteSale(list.id, sale.id)} >×</button>
                   <span className="item-count"> × {sale.count}</span>
                 </div>
               ))}
             </div>
 
-            <div className="add-item">
+            {/* <div className="add-item">
               <input
                 className="add-item-content"
                 placeholder="New item"
@@ -198,6 +227,41 @@ export default function Budgets() {
                 onClick={() => addSale(list.id)}
                 className="add-item-content rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10"
               > Add </button>
+            </div> */}
+
+            <div className="control-sale-container">
+              <div className="input-sale-container">
+                <div className="signup-inputs">
+                  <input
+                    className="signup-line"
+                    type="text"
+                    placeholder="New item"
+                    value={newSaleName[list.id] || ""}
+                    onChange={(e) =>
+                      setNewSaleName((prev) => ({ ...prev, [list.id]: e.target.value }))
+                    }
+                    onKeyUp={(e) => e.key === "Enter" ? addSale(list.id) : null}
+                  />
+                </div>
+                <div className="signup-imputs">
+                  <input
+                    className="signup-line"
+                    type="number"
+                    placeholder="How many"
+                    value={newSale[list.id] || ""}
+                    onChange={(e) =>
+                      setNewSale((prev) => ({ ...prev, [list.id]: e.target.value }))
+                    }
+                    onKeyUp={(e) => e.key === "Enter" ? addSale(list.id) : null}
+                  />
+                </div>
+              </div>
+              <div className="input-sale-container">
+                <button
+                  className="signup-line submit-sum"
+                  onClick={() => addSale(list.id)}
+                  > Add </button>
+              </div>
             </div>
 
           </div>

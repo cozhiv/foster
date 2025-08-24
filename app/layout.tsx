@@ -5,7 +5,9 @@ import localFont from 'next/font/local'
 
 const myFont = localFont({
   variable: "--font-azbuki",
-  src: '../styles/Azbuki-Regular.woff2',
+  src: '../public/fonts/Azbuki-Regular.woff2',
+  weight: '400',
+  style: 'normal',
   // [
   //   {
   //    path: '../styles/NotoSansGlagolitic-Regular.ttf',
@@ -42,9 +44,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="bg" className={myFont.className}>
+    <html  className={myFont.className}>
       <body
-        className={`${ myFont.className } ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${ myFont.variable } ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>

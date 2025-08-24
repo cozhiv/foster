@@ -116,7 +116,7 @@ export default function Dashboard() {
           <div className="dashboard-head">
             <h2>{session.user.email}</h2>
             <h3>Create New List</h3>
-            <div className="create-list">
+            {/* <div className="create-list">
               <input
                 value={newListName}
                 onChange={(e) => setNewListName(e.target.value)}
@@ -124,17 +124,41 @@ export default function Dashboard() {
                 onKeyUp={(e) => e.key === "Enter" ? createList() : null}
               />
               <button onClick={createList}>Create</button>
+            </div> */}
+
+
+            <div className="control-sale-container">
+              <div className="input-sale-container">
+                <div className="signup-inputs">
+                  <input
+                    className="signup-line"
+                    type="text"
+                    value={newListName}
+                    onChange={(e) => setNewListName(e.target.value)}
+                    placeholder="List name"
+                    onKeyUp={(e) => e.key === "Enter" ? createList() : null}
+                  />
+                </div>
+
+              </div>
+              <div className="input-sale-container">
+                <button
+                  className="signup-line submit-sum"
+                  onClick={createList}
+                > Create </button>
+              </div>
             </div>
+            
             <AddUser />
 
-            <h2>Your Lists</h2>
+            <h4>Your lists</h4>
           </div>
           <div className="lists-container">
         {lists.length === 0 && <p>No lists yet</p>}
         {lists.map((list) => (
           <div className="list-container" key={list.id} >
             <div className="link-to-list">
-              <Link key={`LinkTo${list.id}`} href={`mylist/${list.id}/${list.staus}`}>{list.name}</Link>
+              <Link key={`LinkTo${list.id}`} href={`mylist/${list.id}/${list.status}`}>{list.name}</Link>
             </div>
             <div className="list-users">{list.users.map((user, index) => (
               <span key={`user-${list.id}-${index+1}`}>{` ${user};`}</span>
@@ -153,14 +177,14 @@ export default function Dashboard() {
             <div className="items-container">
               वस्तु {list.items.map((item) => (
                 <div key={item.id} className="lists-item">
-                  <span className="item-text">ⱝ {item.name}</span>
+                  <span className="item-text"><span className="glagolitic item-start">ⱌ</span> {item.name}</span>
                   <button className="remove-item" onClick={() => deleteItem(list.id, item.id)} >×</button>
                   <span className="item-count"> × {item.count}</span>
                 </div>
               ))}
             </div>
 
-            <div className="add-item">
+            {/* <div className="add-item">
               <input
                 className="add-item-content"
                 placeholder="New item"
@@ -174,6 +198,32 @@ export default function Dashboard() {
                 onClick={() => addItem(list.id)}
                 className="add-item-content rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10"
               > Add </button>
+            </div> */}
+            
+
+
+            <div className="control-sale-container">
+              <div className="input-sale-container">
+                <div className="signup-inputs">
+                  <input
+                    className="signup-line"
+                    type="text"
+                    placeholder="New item"
+                    value={newItemName[list.id] || ""}
+                    onChange={(e) =>
+                      setNewItemName((prev) => ({ ...prev, [list.id]: e.target.value }))
+                    }
+                    onKeyUp={(e) => e.key === "Enter" ? addItem(list.id) : null}
+                  />
+                </div>
+                
+              </div>
+              <div className="input-sale-container">
+                <button
+                  className="signup-line submit-sum"
+                  onClick={() => addItem(list.id)}
+                > Add </button>
+              </div>
             </div>
 
           </div>
