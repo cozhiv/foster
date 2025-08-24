@@ -281,7 +281,7 @@ export function MyList() {
               onClick={() => takeItem(sale.id)}
               > <span 
               className="item-name-ctrl"
-                  ><span className="glagolitic">Ⰰ</span> {sale.name} </span> <span className="sale-title"> </span>
+                  ><span className="glagolitic item-start">Ⰰ</span> {sale.name} </span> <span className="sale-title"> </span>
                 <span className="linedup">
                     <span
                       className="item-count-ctrl sale-price-ctrl"

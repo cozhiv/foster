@@ -92,8 +92,9 @@
 }
 
 .sale-price-ctrl {
-  top: -2px;
-  font-size: 12pt;
+  top: 0px;
+  padding: 2px auto;
+  font-size: 14pt;
   left: 5px;
   margin-right:5px;
   word-break: keep-all;
@@ -192,6 +193,10 @@ button.submit-sum {
   font-size: 18pt;
   min-width: 200px;
   color: #123344;
+  
+  margin: 2px 2px 3px 2px;
+  
+         
   /* width: fit-content;
   margin: 0;
   padding: 0; */
@@ -200,10 +205,15 @@ button.submit-sum {
 
  @media screen and (max-width: 500) {
   .item-label {
-   min-width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    margin: 2px 2px 3px 0;
+
   }
   .item-label > button{
     min-width: 98%;
+    max-width: 98%;
+    margin: 2px 2px 3px px;
   }
  }
  /* @media screen and (max-width: 355) {
@@ -708,11 +718,17 @@ input {
 input:focus{
   outline: 0;
 }
+input[type=submit]:active {
+  box-shadow: 1px 1px 1px #123344, 0px 0px 1px #123344;
+}
 
 button {
   border: none;
   box-shadow: 2px 2px 3px #123344, -1px -1px 2px #123344;
   font-family: "BgCyril", "Glagolitic", Arial, Helvetica ;
+}
+button:active {
+  box-shadow: 1px 1px 1px #123344, -1px -1px 2px #123344;
 }
 
 /* .add-item-ctrl {
