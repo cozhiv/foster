@@ -16,7 +16,7 @@ export default function LoginForm() {
   const handleInput = (setter) => {
     return function(e) {
       setter(e.target.value);
-      console.log(e.target.value)
+      // console.log(e.target.value)
       if (errMsg && e.key !==" enter") {
         setErrMsg("")
       }

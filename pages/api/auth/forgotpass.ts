@@ -25,13 +25,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   });
   process.env.EMAIL_FROM
   const resetUrl = `${process.env.NEXTAUTH_URL}/resetpass?token=${token}`;
-  console.log(`{send email to:} ${email}`)
+  // console.log(`{send email to:} ${email}`)
   await resend.emails.send({
     from: process.env.EMAIL_FROM,
     to: email,
     subject: "Reset your password",
     html: `<p>Click <a href="${resetUrl}">here</a> to reset your password. Link valid for 1 hour.</p>`,
   });
-  console.log(`{did we send it already:} ${resetUrl}`)
+  // console.log(`{did we send it already:} ${resetUrl}`)
   res.status(200).end();
 }

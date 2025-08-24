@@ -42,7 +42,7 @@ export default function Budgets() {
     const data = await res.json();
     
     setLists(data);
-    console.log(JSON.stringify(data))
+    //console.log(JSON.stringify(data))
   };
 
   const createList = async () => {

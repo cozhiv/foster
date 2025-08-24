@@ -179,8 +179,8 @@ export function MyList() {
     <div className="list-execution">
       <Link className="" key={'LinkToBudget'} href={'../../budgets'}>Budget Settings</Link>
       <h3>{title}</h3>
-      <h4>{"ⱂ          " + budget}</h4>
-      <h4>{"ⱀ          " + budgetLeft}</h4>
+      <h4>{"ⱂ          " + budget}лв</h4>
+      <h4>{"ⱀ          " + budgetLeft}лв</h4>
       {/* <h3>Content balance: {count}</h3> */}
       <div className="users-in-list">Users: {users ? users.map((user, index) => (
         <span key={`listUsers${user}${index}`}>{user};</span>
@@ -230,7 +230,7 @@ export function MyList() {
                 type="number"
                 className="signup-line"
                 value={lev}
-                placeholder="Leva"
+                placeholder="Лева"
                 onChange={(e) => handleLev(e.target.value)}
                 onKeyUp={(e) => e.key === "Enter" ? addSale() : null}
               />

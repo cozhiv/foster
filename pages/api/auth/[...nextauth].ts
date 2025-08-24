@@ -53,7 +53,7 @@ const authOptions: any = {
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM,
       sendVerificationRequest: async ({ identifier: email, url, provider }) => {
-        console.log("[email]  when is this executed?")
+        // console.log("[email]  when is this executed?")
         await resend.emails.send({
           from: provider.from,
           to: email,

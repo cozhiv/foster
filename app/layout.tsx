@@ -1,6 +1,25 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import localFont from 'next/font/local'
+
+const myFont = localFont({
+  variable: "--font-azbuki",
+  src: '../styles/Azbuki-Regular.woff2',
+  // [
+  //   {
+  //    path: '../styles/NotoSansGlagolitic-Regular.ttf',
+  //    style: 'normal',
+     
+  //   },
+  //   {
+  //     path: '../styles/Azbuki-Regular.woff2',
+  //     style: 'normal',
+  //     weight: "900"
+  //   }
+  // ],
+  
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,9 +42,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="bg" className={myFont.className}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${ myFont.className } ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
