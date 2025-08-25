@@ -145,7 +145,7 @@ export default function Dashboard() {
                 <button
                   className="signup-line submit-sum"
                   onClick={createList}
-                > Create </button>
+            > Create <span className="glagolitic">Ⰶ</span></button>
               </div>
             </div>
             
@@ -222,7 +222,7 @@ export default function Dashboard() {
                 <button
                   className="signup-line submit-sum"
                   onClick={() => addItem(list.id)}
-                > Add </button>
+                > Add <span className="glagolitic">Ⰶ</span></button>
               </div>
             </div>
 

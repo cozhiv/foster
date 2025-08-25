@@ -96,10 +96,7 @@ export function MyList() {
   }
   const handleLev = (value) => {
 
-    
-
-
-    if (value === 0 || value == null) {
+    if ( value === "") {
       nullSum()
     } else {
       setEuro(roundOn3rd(value / levro))
@@ -109,7 +106,7 @@ export function MyList() {
   }
 
   const handleEuro = (value) => {
-    if (value === 0 || value == null) {
+    if ( value == "") {
       nullSum()
     } else {
       setLev(roundOn3rd(value * levro))

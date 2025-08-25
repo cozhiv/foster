@@ -109,7 +109,7 @@
   border: none;
   background-color: rgb(217, 221, 218);
   padding: 0 3px;
-  box-shadow: 6px 2px 3px #123344, -1px -1px 2px #123344;
+  box-shadow: 3px 2px 3px #123344, -1px -1px 2px #123344;
   font-size: 8pt;
   top: -5px;
   position: relative;
@@ -125,7 +125,6 @@
   justify-content: end;
   font-size: 8pt;
   gap: 4px 4px;
-
 }
 
 .page-title{

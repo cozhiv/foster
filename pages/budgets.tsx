@@ -260,7 +260,7 @@ export default function Budgets() {
                 <button
                   className="signup-line submit-sum"
                   onClick={() => addSale(list.id)}
-                  > Add </button>
+                > Add</button>
               </div>
             </div>
 
