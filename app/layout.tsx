@@ -35,7 +35,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Roster",
-  description: "Shared organization of a celebration or . Create Lists, add Friends to lists, create and delete items and collect them in parallel with your firends.",
+  description: "Shared List and shared budget. Shared organization of a celebration. Create Lists, add Friends to lists, create and delete items and collect them in parallel with your firends.",
 };
 
 export default function RootLayout({

@@ -87,7 +87,7 @@ export default function LoginForm() {
             <Image
                         className="dark:invert"
                         src="/googlesign.svg"
-                        alt="Vercel logomark"
+                        alt="Google sign in."
                         width={20}
                         height={20}
                       /> Sign in with Google</button>
@@ -95,7 +95,7 @@ export default function LoginForm() {
             <Image
                           className="dark:invert"
                           src="/facebooksign.svg"
-                          alt="Vercel logomark"
+                          alt="Facebook sign in."
                           width={20}
                           height={20}
                         /> Sign in with Facebook</button>

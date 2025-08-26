@@ -123,7 +123,7 @@ export default function Dashboard() {
                 placeholder="List name"
                 onKeyUp={(e) => e.key === "Enter" ? createList() : null}
               />
-              <button onClick={createList}>Create</button>
+              <button onClick={createList}>Create </button>
             </div> */}
 
 
@@ -145,7 +145,7 @@ export default function Dashboard() {
                 <button
                   className="signup-line submit-sum"
                   onClick={createList}
-            > Create <span className="glagolitic">Ⰶ</span></button>
+                ><span className="glagolitic">Ⰶ</span> Create</button>
               </div>
             </div>
             
@@ -164,11 +164,12 @@ export default function Dashboard() {
               <span key={`user-${list.id}-${index+1}`}>{` ${user};`}</span>
             ))} </div>
             <div className="list-settings">
-              <button onClick={() => deleteList(list.id)}>Delete List</button>
+              <button onClick={() => deleteList(list.id)}
+              ><span className="glagolitic">Ⱍ</span> Delete List</button>
               <button
                 className="rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10"
                 onClick={() => setUserPanelOpen(list.id)}
-              >New user</button>
+              > <span className="glagolitic">Ⰾ</span> New user</button>
 
             </div>
 
@@ -222,7 +223,7 @@ export default function Dashboard() {
                 <button
                   className="signup-line submit-sum"
                   onClick={() => addItem(list.id)}
-                > Add <span className="glagolitic">Ⰶ</span></button>
+                ><span className="glagolitic">Ⰶ</span> Add </button>
               </div>
             </div>
 
