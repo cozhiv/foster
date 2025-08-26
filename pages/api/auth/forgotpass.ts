@@ -23,7 +23,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       expires,
     },
   });
-  process.env.EMAIL_FROM
   const resetUrl = `${process.env.NEXTAUTH_URL}/resetpass?token=${token}`;
   // console.log(`{send email to:} ${email}`)
   await resend.emails.send({
