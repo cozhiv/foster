@@ -6,11 +6,13 @@ import { resend } from "../../utils";
 // const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
+
+  const {message, subject, respondent} = req.body
   const { data, error } = await resend.emails.send({
-    from: 'Acme <onboarding@resend.dev>',
+    from: `${respondent} <sendfromweb@mutlist.com>`,
     to: ['cozhiv@gmail.com'],
-    subject: 'Hello world',
-    react: EmailTemplate({ firstName: 'John' }),
+    subject,
+    react: EmailTemplate({ message, subject, respondent }),
   });
 
   if (error) {

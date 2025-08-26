@@ -99,21 +99,20 @@ export default function Home() {
           />
           my Github account
         </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/32px-Gmail_icon_(2020).svg.png"
-            alt="Gmail icon"
-            width={16}
-            height={16}
-          />
-          Write me
-        </a>
+        
+        <Link
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4" 
+          key={'LinkToSendMeFeedback'}
+          href={'sendmail'} >
+            <Image
+              aria-hidden
+              src="/32px-Gmail_icon_(2020).svg.png"
+              alt="Gmail icon"
+              width={16}
+              height={16}
+            />
+            Write me
+        </Link>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"

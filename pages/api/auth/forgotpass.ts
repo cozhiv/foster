@@ -25,6 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   });
   const resetUrl = `${process.env.NEXTAUTH_URL}/resetpass?token=${token}`;
 
+  console.log(resetUrl)
   const { data, error } = await resend.emails.send({
     from: process.env.EMAIL_FROM,
     to: email,

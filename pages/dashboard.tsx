@@ -108,6 +108,8 @@ export default function Dashboard() {
 
   return (
         <div className="dashboard-container">
+      <Link key='LinkToBudget' href={'/'}>Home</Link>
+      <span className="space-maker">   |   </span>
       <Link key="signoutlink" href = "login" onClick={() => signOut()}>Sign out</Link>
       <span className="space-maker">   |   </span>
       <Link key='LinkToBudget' href={'budgets'}>  
