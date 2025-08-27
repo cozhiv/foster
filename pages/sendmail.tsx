@@ -1,6 +1,11 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+
+
+
+
 
 export default function ResetPasswordPage() {
   const router = useRouter();
@@ -8,6 +13,8 @@ export default function ResetPasswordPage() {
   const [done, setDone] = useState(false);
   const [subject, setSubject] = useState('')
   const [respondent, setRespondent] = useState('')
+
+  const { data: session, status } = useSession();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -18,7 +25,9 @@ export default function ResetPasswordPage() {
     });
     setDone(true);
   };
-
+  
+  if (status === "loading") return <p>Ⰿ Loading...</p>;
+  if (!session) return router.push("login");
   return (
     <div className="">
       <Link key='LinkToBudget' href={'/'}>Home</Link>
