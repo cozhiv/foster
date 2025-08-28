@@ -126,7 +126,9 @@ export function MyList() {
   return (
     <div className="list-execution">
       <Link className="" key={'LinkToDashboard'} href={'../../dashboard'}>Lists Settings</Link>
-      <h1>{title}</h1>
+      <div className="fontsize4 centered-div">...a list called</div>
+      <div className="fontsize3 centered-div">{title}</div>
+      
       {/* <h3>Content balance: {count}</h3> */}
       <div className="users-in-list">Users: {users ? users.map((user, index) => (
         <span key={`listUsers${user}${index}`}>{user};</span>

@@ -108,16 +108,17 @@ export default function Dashboard() {
 
   return (
         <div className="dashboard-container">
-      <Link key='LinkToBudget' href={'/'}>Home</Link>
-      <span className="space-maker">   |   </span>
-      <Link key="signoutlink" href = "login" onClick={() => signOut()}>Sign out</Link>
-      <span className="space-maker">   |   </span>
-      <Link key='LinkToBudget' href={'budgets'}>  
-       Budgets
-      </Link>
+        <Link key='LinkToHome' href={'/'}>Home</Link>
+        <span className="space-maker">   |   </span>
+        <Link key="signoutlink" href = "login" onClick={() => signOut()}>Sign out</Link>
+        <span className="space-maker">   |   </span>
+        <Link key='LinkToBudget' href={'budgets'}>  
+          Budgets
+        </Link>
+      <div className="fontsize5">{session.user.email}</div>
+      <div className="fontsize3 centered-div">Lists</div>
           <div className="dashboard-head">
-            <h2>{session.user.email}</h2>
-            <h3>Create New List</h3>
+        <div className="fontsize5">Create New List</div>
             {/* <div className="create-list">
               <input
                 value={newListName}
@@ -130,7 +131,7 @@ export default function Dashboard() {
 
 
             <div className="control-sale-container">
-              <div className="input-sale-container">
+              
                 <div className="signup-inputs">
                   <input
                     className="signup-line"
@@ -142,7 +143,7 @@ export default function Dashboard() {
                   />
                 </div>
 
-              </div>
+              
               <div className="input-sale-container">
                 <button
                   className="signup-line submit-sum"
@@ -153,7 +154,7 @@ export default function Dashboard() {
             
             <AddUser />
 
-            <h4>Your lists</h4>
+            <div className="fontsize4 centered-div">Your lists</div>
           </div>
           <div className="lists-container">
         {lists.length === 0 && <p>No lists yet</p>}

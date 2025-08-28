@@ -20,43 +20,34 @@ const ConfirmationButtons = function ({ children, callback }: ConfirmationButton
 
     dispatch(hideConfirmation())
   }
-  const handleDeletion = () => {
-    
+  const hide = () => {
 
     callback()
-    return dispatch(hideConfirmation())
+    dispatch(hideConfirmation())
 
   }
   const deleteItem = async () => {
     await fetch(`/api/lists/${listId}/items/${itemId}/delete`, {
       method: "DELETE",
     });
-    callback();
-    dispatch(hideConfirmation())
+    hide()
   };
 
   const deleteSale = async () => {
     await fetch(`/api/lists/${listId}/sales/${itemId}/delete`, {
       method: "DELETE",
     });
-    callback();
-    dispatch(hideConfirmation())
+    hide()
   }
 
   const deleteList = async () => {
     await fetch(`/api/lists/${listId}/delete`, {
       method: "DELETE",
     });
-    callback();
-    dispatch(hideConfirmation())
+    hide()
   };
-  // if (! confirmationQuestion) return null;
-  // else
-   //  {
-    // const bodyStyle = document.body.style;
-    // bodyStyle.backgroundColor = "grey";
-    // document.body.className = ""
-    // console.log(subject)
+
+  
     switch (subject) {
       case "list":
         return (

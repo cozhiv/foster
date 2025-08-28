@@ -115,63 +115,49 @@ export default function Budgets() {
 
   return (
         <div className="dashboard-container">
-      <Link key='LinkToBudget' href={'/'}>Home</Link>
-      <span className="space-maker">   |   </span>
-      <Link key="signoutlink" href = "login" onClick={() => signOut()}>Sign out</Link>
-      <span className="space-maker">   |   </span>
-      <Link key="LinkToDashboard" href="dashboard" > Roster </Link>
-          <div className="dashboard-head">
-            <h2>{session.user.email}</h2>
-            <h3>Create New Budget</h3>
-            <div className="create-list">
-              {/* <input
-                type="text"
-                value={newListName}
-                onChange={(e) => setNewListName(e.target.value)}
-                placeholder="Budget name"
-                // onKeyUp={(e) => e.key === "Enter" ? createList() : null}
-              />
-            <input
-              type="number"
-              value={newBudget}
-              onChange={(e) => setNewBudget(parseFloat(e.target.value))}
-              placeholder="Budget"
-              onKeyUp={(e) => e.key === "Enter" ? createList() : null}
-            />
-              <button onClick={createList}>Create</button> */}
-          </div>
-        <div className="control-sale-container">
-          <div className="input-sale-container">
-            <div className="signup-inputs">
-              <input
-                className="signup-line"
-                type="text"
-                value={newListName}
-                onChange={(e) => setNewListName(e.target.value)}
-                placeholder="Budget name"
-              />
+        <Link key='LinkToHome' href={'/'}>Home</Link>
+        <span className="space-maker">   |   </span>
+        <Link key="signoutlink" href = "login" onClick={() => signOut()}>Sign out</Link>
+        <span className="space-maker">   |   </span>
+        <Link key="LinkToDashboard" href="dashboard" > Roster </Link>
+      <div className="fontsize5 ">{session.user.email}</div>
+      <div className="fontsize3 centered-div">Budgets</div>
+        <div className="dashboard-head">
+        <div className="fontsize5">Create New Budget</div>
+        <div className="create-list">
             </div>
-            <div className="signup-imputs">
-              <input
-                className="signup-line"
-                type="number"
-                value={newBudget}
-                onChange={(e) => setNewBudget(parseFloat(e.target.value))}
-                placeholder="Budget"
-                onKeyUp={(e) => e.key === "Enter" ? createList() : null}
-              />
+            <div className="control-sale-container">
+              <div className="input-sale-container">
+                <div className="signup-inputs">
+                  <input
+                    className="signup-line"
+                    type="text"
+                    value={newListName}
+                    onChange={(e) => setNewListName(e.target.value)}
+                    placeholder="Budget name"
+                  />
+                </div>
+                <div className="signup-imputs">
+                  <input
+                    className="signup-line"
+                    type="number"
+                    value={newBudget}
+                    onChange={(e) => setNewBudget(parseFloat(e.target.value))}
+                    placeholder="Budget"
+                    onKeyUp={(e) => e.key === "Enter" ? createList() : null}
+                  />
+                </div>
+              </div>
+              <div className="input-sale-container">
+                <button
+                  className="signup-line submit-sum"
+                  onClick={createList}>Create</button>
+              </div>
             </div>
-          </div>
-          <div className="input-sale-container">
-            <button
-              className="signup-line submit-sum"
-              onClick={createList}>Create</button>
-          </div>
-        </div>
             <AddUser />
 
           </div>
-      <h4>Your Budgets:</h4>
+      <div className="fontsize4 centered-div">Your Budgets:</div>
           <div className="lists-container">
         {lists.length === 0 && <p>No lists yet</p>}
         {lists.map((list) => (

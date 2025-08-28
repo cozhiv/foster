@@ -188,9 +188,10 @@ export function MyList() {
   return (
     <div className="list-execution">
       <Link className="" key={'LinkToBudget'} href={'../../budgets'}>Budget Settings</Link>
-      <h3>{title}</h3>
-      <h4><span className="glagolitic">ⱂ</span>{"          " + budget}лв</h4>
-      <h4><span className="glagolitic">ⱀ</span>{"          " + budgetLeft}лв</h4>
+      <div className="fontsize5 centered-div">...an expence called</div>
+      <div className="fontsize3 centered-div">{title}</div>
+      <div className="fontsize3"><span className="glagolitic">ⱂ</span>{"          " + budget}лв</div>
+      <div className="fontsize3"><span className="glagolitic">ⱀ</span>{"          " + budgetLeft}лв</div>
       {/* <h3>Content balance: {count}</h3> */}
       <div className="users-in-list">Users: {users ? users.map((user, index) => (
         <span key={`listUsers${user}${index}`}>{user};</span>

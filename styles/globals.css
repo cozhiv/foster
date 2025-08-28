@@ -131,10 +131,10 @@
   text-align: center;
 }
 
-.users-in-list{
+/* .users-in-list{
   margin-top: -22px;
   text-align: center;
-}
+} */
 
 .input-container{
   gap: 4;
@@ -142,6 +142,7 @@
 
 .control-sale-container {
   display:flex;
+  margin-bottom: 20px;
 }
 
 .legend {
@@ -549,7 +550,6 @@ a {
 
 .dashboard-head {
   max-width: 500px;
-  margin: 0 auto 0 auto;
 }
 
 .add-user-popup {
@@ -699,7 +699,8 @@ textarea {
 }
 
 .link-to-list {
-  font-size: 20pt;
+  font-size: 16pt;
+  text-align: center;
 }
 
 .list-users {
@@ -751,3 +752,18 @@ textarea:focus {
 
 
 
+.fontsize3{
+  font-size: 18pt;
+}
+.fontsize4{
+  font-size: 16pt;
+}
+.fontsize5{
+  font-size: 12pt;
+}
+
+.centered-div {
+  /* margin: 0 auto 0 auto;
+  width: 20%; */
+  text-align: center;
+}
