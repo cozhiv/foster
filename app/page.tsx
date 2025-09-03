@@ -26,17 +26,18 @@ export default function Home() {
             .
           </li>
           <li className="tracking-[-.01em]">
-           in Your list add other participiants.
-          </li>
-          <li className="tracking-[-.01em]">
-           all to collect in parallel the items.
-          </li>
-          <li className="tracking-[-.01em]">
-           All are participating in fulfillment.
+           In Your list add other participiants.
           </li>
           <li className="tracking-[-.01em]">
            The list is manageable by members in.
           </li>
+          <li className="tracking-[-.01em]">
+           All collect the items simultaneously.
+          </li>
+          <li className="tracking-[-.01em]">
+           All are participating in fulfillment.
+          </li>
+          
           
         </ol>
 
