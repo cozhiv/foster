@@ -20,7 +20,7 @@ export default function IconItem({
         fontSize: 12,
         userSelect: 'none',
       }}
-      title={`Section ${sectionIndex + 1} • Icon ${iconIndex + 1}`}
+      title={`Section ${sectionIndex + 1} - Icon ${iconIndex + 1}`}
     >
       S{sectionIndex + 1}-I{iconIndex + 1}
     </div>

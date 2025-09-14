@@ -25,10 +25,6 @@ export default function Dashboard() {
   const [newItemName, setNewItemName] = useState({});
   // const [loading, setLoading] = useState(false);
 
-  //const [newUserInput, setNewUserInput] = useState("")
-  
-
-  //const invisibleUA = useAppSelector((state) => state.dashboard.invisibleUA)
   const confirmationQuestion = useAppSelector(state => state.confirmation.confirmationQuestion)
   const router = useRouter()
   useEffect(() => {
@@ -78,10 +74,6 @@ export default function Dashboard() {
     dispatch(setSubject("item"))
     dispatch(setConfirmation("Do you really want to remove the item?"))
 
-    // await fetch(`/api/lists/${listId}/items/${itemId}/delete`, {
-    //   method: "DELETE",
-    // });
-    // fetchLists();
   };
 
   const deleteList = async (listId: string) => {
@@ -90,15 +82,11 @@ export default function Dashboard() {
     dispatch(setAct("delete"))
     dispatch(setSubject("list"))
     dispatch(setConfirmation("Do you really want to delete the list?"))
-    // await fetch(`/api/lists/${listId}/delete`, {
-    //   method: "DELETE",
-    // });
-    // fetchLists();
+
   };
 
   const setUserPanelOpen = async (listId: string) => {
     dispatch(setVisibleUA())
-    // setInvisibleUA(false)
     dispatch(setToListInput(listId))
   }
 
@@ -108,40 +96,32 @@ export default function Dashboard() {
 
   return (
         <div className="dashboard-container">
-        <Link key='LinkToHome' href={'/'}>Home</Link>
-        <span className="space-maker">   |   </span>
-        <Link key="signoutlink" href = "login" onClick={() => signOut()}>Sign out</Link>
-        <span className="space-maker">   |   </span>
-        <Link key='LinkToBudget' href={'budgets'}>  
-          Budgets
-        </Link>
-      <div className="fontsize5">{session.user.email}</div>
-      <div className="fontsize3 centered-div">Lists</div>
+          <Link key='LinkToHome' href={'/'}>Home</Link>
+          <span className="space-maker">   |   </span>
+          <Link 
+            key="signoutlink"
+            href = "login"
+            onClick={() => signOut()}
+          > Sign out </Link>
+          <span className="space-maker">   |   </span>
+          <Link key='LinkToBudget' href={'budgets'}>  
+            Budgets
+          </Link>
+          <div className="fontsize5">{session.user.email}</div>
+          <div className="fontsize3 centered-div">Lists</div>
           <div className="dashboard-head">
-        <div className="fontsize5">Create New List</div>
-            {/* <div className="create-list">
-              <input
-                value={newListName}
-                onChange={(e) => setNewListName(e.target.value)}
-                placeholder="List name"
-                onKeyUp={(e) => e.key === "Enter" ? createList() : null}
-              />
-              <button onClick={createList}>Create </button>
-            </div> */}
-
-
+            <div className="fontsize5">Create New List</div>
             <div className="control-sale-container">
-              
-                <div className="signup-inputs">
-                  <input
-                    className="signup-line"
-                    type="text"
-                    value={newListName}
-                    onChange={(e) => setNewListName(e.target.value)}
-                    placeholder="List name"
-                    onKeyUp={(e) => e.key === "Enter" ? createList() : null}
-                  />
-                </div>
+              <div className="signup-inputs">
+                <input
+                  className="signup-line"
+                  type="text"
+                  value={newListName}
+                  onChange={(e) => setNewListName(e.target.value)}
+                  placeholder="List name"
+                  onKeyUp={(e) => e.key === "Enter" ? createList() : null}
+                />
+              </div>
 
               
               <div className="input-sale-container">
@@ -150,97 +130,80 @@ export default function Dashboard() {
                   onClick={createList}
                 ><span className="glagolitic">Ⰶ</span> Create</button>
               </div>
-            </div>
-            
+            </div>               
             <AddUser />
-
             <div className="fontsize4 centered-div">Your lists</div>
           </div>
           <div className="lists-container">
-        {lists.length === 0 && <p>No lists yet</p>}
-        {lists.map((list) => (
-          <div className="list-container" key={list.id} >
-            <div className="link-to-list">
-              <Link key={`LinkTo${list.id}`} href={`mylist/${list.id}/${list.status}`}>{list.name}</Link>
-            </div>
-            <div className="list-users">{list.users.map((user, index) => (
-              <span key={`user-${list.id}-${index+1}`}>{` ${user};`}</span>
-            ))} </div>
-            <div className="list-settings">
-              <button onClick={() => deleteList(list.id)}
-              ><span className="glagolitic">Ⱍ</span> Delete List</button>
-              <button
-                className="rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10"
-                onClick={() => setUserPanelOpen(list.id)}
-              > <span className="glagolitic">Ⰾ</span> New user</button>
-
-            </div>
-
-
-
-            <div className="items-container">
-              वस्तु {list.items.map((item) => (
-                <div key={item.id} className="lists-item">
-                  <span className="item-text"><span className="glagolitic item-start">ⱌ</span> {item.name}</span>
-                  <button className="remove-item" onClick={() => deleteItem(list.id, item.id)} >×</button>
-                  <span className="item-count"> × {item.count}</span>
+            {lists.length === 0 && <p>No lists yet</p>}
+            {lists.map((list) => (
+              <div className="list-container" key={list.id} >
+                <div className="link-to-list">
+                  <Link key={`LinkTo${list.id}`} href={`mylist/${list.id}/${list.status}`}>{list.name}</Link>
                 </div>
-              ))}
-            </div>
+                <div className="list-users">{list.users.map((user, index) => (
+                  <span key={`user-${list.id}-${index+1}`}>{` ${user};`}</span>
+                ))} </div>
+                <div className="list-settings">
+                  <button onClick={() => deleteList(list.id)}
+                  ><span className="glagolitic">Ⱍ</span> Delete List</button>
+                  <button
+                    className="rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10"
+                    onClick={() => setUserPanelOpen(list.id)}
+                  > <span className="glagolitic">Ⰾ</span> New user</button>
 
-            {/* <div className="add-item">
-              <input
-                className="add-item-content"
-                placeholder="New item"
-                value={newItemName[list.id] || ""}
-                onChange={(e) =>
-                  setNewItemName((prev) => ({ ...prev, [list.id]: e.target.value }))
+                </div>
+
+
+                {
+                  // वस्तु
                 }
-                onKeyUp={(e) => e.key === "Enter" ? addItem(list.id) : null}
-              />
-              <button
-                onClick={() => addItem(list.id)}
-                className="add-item-content rounded-md bg-gray-950/5 px-2.5 py-1.5 text-sm font-semibold text-gray-900 hover:bg-gray-950/10"
-              > Add </button>
-            </div> */}
-            
-
-
-            <div className="control-sale-container">
-              <div className="input-sale-container">
-                <div className="signup-inputs">
-                  <input
-                    className="signup-line"
-                    type="text"
-                    placeholder="New item"
-                    value={newItemName[list.id] || ""}
-                    onChange={(e) =>
-                      setNewItemName((prev) => ({ ...prev, [list.id]: e.target.value }))
-                    }
-                    onKeyUp={(e) => e.key === "Enter" ? addItem(list.id) : null}
-                  />
+                <div className="items-container">
+                  {list.items.map((item) => (
+                    <div key={item.id} className="lists-item">
+                      <span className="item-text"><span className="glagolitic item-start">ⱌ</span> {item.name}</span>
+                      <button className="remove-item" onClick={() => deleteItem(list.id, item.id)} >×</button>
+                      <span className="item-count"> × {item.count}</span>
+                    </div>
+                  ))}
                 </div>
-                
-              </div>
-              <div className="input-sale-container">
-                <button
-                  className="signup-line submit-sum"
-                  onClick={() => addItem(list.id)}
-                ><span className="glagolitic">Ⰶ</span> Add </button>
-              </div>
-            </div>
+              
 
+                <div className="control-sale-container">
+                  <div className="input-sale-container">
+                    <div className="signup-inputs">
+                      <input
+                        className="signup-line"
+                        type="text"
+                        placeholder="New item"
+                        value={newItemName[list.id] || ""}
+                        onChange={(e) =>
+                          setNewItemName((prev) => ({ ...prev, [list.id]: e.target.value }))
+                        }
+                        onKeyUp={(e) => e.key === "Enter" ? addItem(list.id) : null}
+                      />
+                    </div>
+                    
+                  </div>
+                  <div className="input-sale-container">
+                    <button
+                      className="signup-line submit-sum"
+                      onClick={() => addItem(list.id)}
+                    ><span className="glagolitic">Ⰶ</span> Add </button>
+                  </div>
+                </div>
+
+              </div>
+            ))}
           </div>
-        ))}
-          </div>
-       <ConfirmationPanel>
-          <div className="question-card">
-            Delete
-          </div>
-        <div className="question-card">
-         <ConfirmationButtons callback={fetchLists}/>
-         </div>
-      </ConfirmationPanel>
+          <ConfirmationPanel>
+            <div className="question-card">
+              Delete
+            </div>
+            <div className="question-card">
+              <ConfirmationButtons callback={fetchLists}/>
+            </div>
+          </ConfirmationPanel>
         </div>
       
 

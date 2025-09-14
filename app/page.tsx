@@ -37,6 +37,9 @@ export default function Home() {
           <li className="tracking-[-.01em]">
            All are participating in fulfillment.
           </li>
+          <li className="tracking-[-.01em]">
+           Non zero valued List can be a budget.
+          </li>
           
           
         </ol>
@@ -53,35 +56,18 @@ export default function Home() {
                 height={22}
             />Roster
            </Link>
-          {/* <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            
-            Deploy now
-          </a> */}
+
 
           <Link
             className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center gap-2 justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
             key={'LinkToBudgets'} href={'budgets'}>
             <Image
-              // className="dark:invert"
               src="/zhizette4_1_w.svg"
               alt="Budget calculator"
               width={22}
               height={22}
             />Budget
           </Link>
-          {/* <a
-            
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-           Budget
-          </a> */}
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
